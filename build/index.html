@@ -72,24 +72,24 @@
                 <div class="ccase-managment">
                   <div class="ccase-managment__top">
                     <div class="ccase-managment__top-item"><span class="infoname">Caller Name</span>
-                      <input class="infovalue" :value="$root._data.callerInfo.callerName" readonly>
+                      <input class="infovalue" :value="$root._data.callerName" readonly>
                     </div>
                     <div class="ccase-managment__top-item"><span class="infoname">Caller Phone #</span>
-                      <input class="infovalue" value="214-701-5489" readonly>
+                      <input class="infovalue" :value="$root._data.callerPhone" readonly>
                     </div>
                     <div class="ccase-managment__top-item"><span class="infoname">Call Type</span>
-                      <input class="infovalue" :value="$root._data.callerInfo.callerType" readonly>
+                      <input class="infovalue" :value="$root._data.callerType" readonly>
                     </div>
                     <div class="ccase-managment__top-item"><span class="infoname">Transferred from</span>
-                      <input class="infovalue" :value="$root._data.callerInfo.transferLocation" readonly>
+                      <input class="infovalue" :value="$root._data.callerTransferLocation" readonly>
                     </div>
                     <div class="ccase-managment__top-item"><span class="infoname">Hospital</span>
-                      <input class="infovalue" :value="$root._data.callerInfo.hospital" readonly>
+                      <input class="infovalue" :value="$root._data.callerHospital" readonly>
                     </div>
                   </div>
                   <div class="ccase-managment__top"><span class="infoname">Notes</span></div>
                   <div class="ccase-managment__top__bottom">
-                    <textarea class="full-width" readonly></textarea>
+                    <textarea class="full-width" :value="$root._data.callerNotes" readonly></textarea>
                   </div>
                 </div>
                 <div class="content__top-line">
@@ -120,24 +120,24 @@
                 <div class="ccase-managment">
                   <div class="ccase-managment__top">
                     <div class="ccase-managment__top-item"><span class="infoname">Caller Name</span>
-                      <input class="infovalue" :value="$root._data.callerInfo.callerName" readonly>
+                      <input class="infovalue" :value="$root._data.callerName" readonly>
                     </div>
                     <div class="ccase-managment__top-item"><span class="infoname">Caller Phone #</span>
-                      <input class="infovalue" value="214-701-5489" readonly>
+                      <input class="infovalue" :value="$root._data.callerPhone" readonly>
                     </div>
                     <div class="ccase-managment__top-item"><span class="infoname">Call Type</span>
-                      <input class="infovalue" :value="$root._data.callerInfo.callerType" readonly>
+                      <input class="infovalue" :value="$root._data.callerType" readonly>
                     </div>
                     <div class="ccase-managment__top-item"><span class="infoname">Transferred from</span>
-                      <input class="infovalue" :value="$root._data.callerInfo.transferLocation" readonly>
+                      <input class="infovalue" :value="$root._data.callerTransferLocation" readonly>
                     </div>
                     <div class="ccase-managment__top-item"><span class="infoname">Hospital</span>
-                      <input class="infovalue" :value="$root._data.callerInfo.hospital" readonly>
+                      <input class="infovalue" :value="$root._data.callerHospital" readonly>
                     </div>
                   </div>
-                  <div class="ccase-managment__top"><span>Notes</span></div>
+                  <div class="ccase-managment__top"><span class="infoname">Notes</span></div>
                   <div class="ccase-managment__top__bottom">
-                    <textarea class="full-width" readonly></textarea>
+                    <textarea class="full-widthidth" :value="$root._data.callerNotes" readonly></textarea>
                   </div>
                 </div>
                 <div class="content__top-line">

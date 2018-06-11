@@ -4,7 +4,7 @@ import Vue from 'vue';
 import VueResource from 'vue-resource';
 import VueMoment from 'vue-moment'; 
 import {Tabs, Tab} from 'vue-tabs-component';
-
+import axios from 'axios';
 
 Vue.use(VueResource);
 Vue.use(VueMoment);
@@ -46,11 +46,13 @@ let appData = {
   paymentResult: null,
   userIsVerify: false,
   currentShowPhoneBook: false,
-  callNumber: '',
-  callType: '',
-  callNotes: '',
-  callDestination: '',
-  callInfos: [],
+  callerName: 'a',
+  callerPhone: 'a',
+  callerType: 'a',
+  callerNotes: 'a',
+  callDestination: 'a',
+  callerTransferLocation: 'NA',
+  callerHospital: 'NA',
 };
 
 
@@ -67,6 +69,52 @@ let App = new Vue({
     vm.spaceWidget =  window.ciscosparkClient();
     Vue.http.get('demo-credentials.json').then((response) => {
       vm.spaceWidget.init(response.data);
+    });
+    //Get TempDNIS from the url
+    var url = new URL(window.location.href);
+    var tempDNIS = url.searchParams.get("tempDNIS");
+    console.log('TempDNIS=', tempDNIS);
+    const responseData = {
+      tempDNIS: "9722345679",
+      status: "used",
+      destinationNo: "214-222-3333",
+      destinationName: "Urologist",
+      patientName: "Sarah Jones",
+      patientMRN: "E234567",
+      callerName: "John Jacob",
+      callerPhone: "Ss",
+      callerType: "Ss",
+      notes: "Ss",
+      phantom1: "",
+      phantom2: "",
+      phantom3: ""
+    }
+    vm.callerName = responseData.callerName;
+    vm.callerPhone = responseData.callerPhone;
+    vm.callerType = responseData.callerType;
+    vm.callerNotes = responseData.notes;
+    //vm.currentPatientName = responseData.patientName;
+    //vm.activePacient = responseData.patientName.indexOf('Sarahs') > -1 ? 1 : 0
+    
+    axios({method: 'post',
+        url: 'http://office.healthcareintegrations.com:8900/getTempDNIS',
+        responseType: 'json',
+        data: {tempDNIS}
+      }
+    )
+    .then(function(response){
+        console.log('Axios_Response=', response);
+        
+        if(response.error){
+            alert('No TempDNIS Found.');
+        }
+        else{
+          vm.callerName = responseData.callerName;
+          vm.callerPhone = responseData.callerPhone;
+          vm.callerType = responseData.callerType;
+          vm.callerNotes = responseData.notes;
+          vm.currentPatientName = responseData.patientName;
+        }
     });
   },
   methods: {

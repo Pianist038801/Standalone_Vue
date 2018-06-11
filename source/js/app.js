@@ -61,63 +61,46 @@ let App = new Vue({
   // router,
   created(){
     let vm = this;
-    vm.activePacient = 0;
+    this.getInfoFromAgent();
   },
   mounted() {
     let vm = this;
+    vm.activePacient = 0;
     vm.currentShowBox = 'scheduling';
     vm.spaceWidget =  window.ciscosparkClient();
     Vue.http.get('demo-credentials.json').then((response) => {
       vm.spaceWidget.init(response.data);
     });
-    //Get TempDNIS from the url
-    var url = new URL(window.location.href);
-    var tempDNIS = url.searchParams.get("tempDNIS");
-    console.log('TempDNIS=', tempDNIS);
-    const responseData = {
-      tempDNIS: "9722345679",
-      status: "used",
-      destinationNo: "214-222-3333",
-      destinationName: "Urologist",
-      patientName: "Sarah Jones",
-      patientMRN: "E234567",
-      callerName: "John Jacob",
-      callerPhone: "Ss",
-      callerType: "Ss",
-      notes: "Ss",
-      phantom1: "",
-      phantom2: "",
-      phantom3: ""
-    }
-    vm.callerName = responseData.callerName;
-    vm.callerPhone = responseData.callerPhone;
-    vm.callerType = responseData.callerType;
-    vm.callerNotes = responseData.notes;
-    //vm.currentPatientName = responseData.patientName;
-    //vm.activePacient = responseData.patientName.indexOf('Sarahs') > -1 ? 1 : 0
-    
-    axios({method: 'post',
+  },
+  methods: {
+    getInfoFromAgent: function() {
+      let vm = this;
+      //Get TempDNIS from the url
+      var url = new URL(window.location.href);
+      var tempDNIS = url.searchParams.get("tempDNIS");
+      console.log('TempDNIS=', tempDNIS);
+
+      axios({method: 'post',
         url: 'http://office.healthcareintegrations.com:8900/getTempDNIS',
         responseType: 'json',
         data: {tempDNIS}
       }
-    )
-    .then(function(response){
-        console.log('Axios_Response=', response);
-        
-        if(response.error){
-            alert('No TempDNIS Found.');
-        }
-        else{
-          vm.callerName = responseData.callerName;
-          vm.callerPhone = responseData.callerPhone;
-          vm.callerType = responseData.callerType;
-          vm.callerNotes = responseData.notes;
-          vm.currentPatientName = responseData.patientName;
-        }
-    });
-  },
-  methods: {
+      )
+      .then(function(response){
+          console.log('Get_CallInfo_Axios_Response=', response);
+          if(response.data.error){
+              alert('No TempDNIS Found.');
+          }
+          else{
+            const responseData = response.data;
+            vm.callerName = responseData.callerName;
+            vm.callerPhone = responseData.callerPhone;
+            vm.callerType = responseData.callerType;
+            vm.callerNotes = responseData.notes;
+            vm.activePacient = responseData.patientName.indexOf('Sarah') > -1 ? 1 : 0;
+          }
+      });
+    },
     showSpaceWidget: function () {
       var vm = this;
       var $el = document.getElementById("huddle-room-mount");

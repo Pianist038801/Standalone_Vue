@@ -73,6 +73,23 @@ let App = new Vue({
     });
   },
   methods: {
+    releaseTempDNIS: function(tempDNIS) {
+      axios({method: 'post',
+        url: 'http://office.healthcareintegrations.com:8900/releaseTempDNIS',
+        responseType: 'json',
+        data: {tempDNIS}
+      }
+      )
+      .then(function(response){
+          console.log('Get_CallInfo_Axios_Response=', response);
+          if(response.data.error){
+            console.error('Error in Releasing TempDNIS');
+          }
+          else{
+            console.log('TempDNIS released');
+          }
+      });
+    },
     getInfoFromAgent: function() {
       let vm = this;
       //Get TempDNIS from the url
@@ -89,7 +106,7 @@ let App = new Vue({
       .then(function(response){
           console.log('Get_CallInfo_Axios_Response=', response);
           if(response.data.error){
-              alert('No TempDNIS Found.');
+              console.error('No TempDNIS Found.')
           }
           else{
             const responseData = response.data;
@@ -98,6 +115,7 @@ let App = new Vue({
             vm.callerType = responseData.callerType;
             vm.callerNotes = responseData.notes;
             vm.activePacient = responseData.patientName.indexOf('Sarah') > -1 ? 1 : 0;
+            vm.releaseTempDNIS(tempDNIS);
           }
       });
     },

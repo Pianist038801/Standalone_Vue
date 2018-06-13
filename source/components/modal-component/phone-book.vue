@@ -126,7 +126,20 @@
                 .then(function(response){
                     console.log('Axios_Response=', response);
                     if(response.error){
-                        alert('No Available TempDNIS Now.');
+                        console.error('No Available TempDNIS Now.');
+                    }
+                    else{
+                        const { tempDNIS } = response.data;
+                        console.log('TEMPDNIS=', tempDNIS);
+                        const callNumber = 1111111; // get from finesse api
+                        const transferNumber = results.destinationNo.split('-').join('')
+                        const tropo_url = `https://api.tropo.com/1.0/sessions?action=create&token=44564751646557747668447255525847696773474b63696e7a5a5976675a55597277424f7652685a6d68706e&callnumber=${callNumber}&transfernum=${transferNumber}&animask=${tempDNIS}`
+                        axios({method: 'get',
+                        url: tropo_url,
+                        responseType: 'json'})
+                        .then(function(response){
+                            console.log('Tropo_Response=', response);
+                        });
                     }
                 });
                 this.$refs.modalphone.close()

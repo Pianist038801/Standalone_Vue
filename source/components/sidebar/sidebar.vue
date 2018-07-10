@@ -105,6 +105,7 @@
                 currentPacient: 0,
                 currentPacientName: '',
                 visible: false,
+                patientNames: [],
             }
         },
         methods: {
@@ -129,7 +130,7 @@
         },
         created() {
             this.currentPacientName = this.pacients[this.$root.$data.activePacient].Name;
-
+            
         },
         mounted() {
             let vm = this;

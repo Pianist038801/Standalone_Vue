@@ -5,7 +5,11 @@ import VueResource from 'vue-resource';
 import VueMoment from 'vue-moment'; 
 import {Tabs, Tab} from 'vue-tabs-component';
 import axios from 'axios';
+import VueBreadcrumbs from 'vue-breadcrumbs'
+import Multiselect from '../components/name-select/src/Multiselect.vue';
 
+Vue.use(Multiselect)
+Vue.use(VueBreadcrumbs)
 Vue.use(VueResource);
 Vue.use(VueMoment);
 Vue.component('tabs', Tabs);
@@ -53,6 +57,8 @@ let appData = {
   callDestination: 'a',
   callerTransferLocation: 'NA',
   callerHospital: 'NA',
+  patientNames: ['a','s'],
+  dropdownCallerName: ''
 };
 
 
@@ -66,13 +72,16 @@ let App = new Vue({
   mounted() {
     let vm = this;
     vm.activePacient = 0;
-    vm.currentShowBox = 'scheduling';
+    vm.currentShowBox = 'home';
     vm.spaceWidget =  window.ciscosparkClient();
     Vue.http.get('demo-credentials.json').then((response) => {
       vm.spaceWidget.init(response.data);
     });
   },
   methods: {
+    getCurrentIndexPacient: function() {
+
+    },
     releaseTempDNIS: function(tempDNIS) {
       axios({method: 'post',
         url: 'http://office.healthcareintegrations.com:8900/releaseTempDNIS',
@@ -172,7 +181,8 @@ let App = new Vue({
     statementReview,
     paymentConfirmation,
     paymentResult,
-    phoneBook
+    phoneBook,
+    Multiselect
   },
   watch: {
     currentShowBox: function () {
@@ -212,9 +222,17 @@ Vue.http.get(urlData)
     (response) => {
       console.log(response);
       let data = response.body;
-
+      console.log('data=', data)
+      let array = ['EPIC']; 
+      data.Patients.forEach((item, i) => {
+          if(item.Category=='EPIC')
+              array.push(item.Name);
+      });
+      array.push('add New')
+      data.patientNames = array.slice(0);
       //
         appData = Object.assign(appData, data);
+
         App.$mount('#app');
         
       // Vue.http.get(downloadURL).then((res)=>{

@@ -67,12 +67,19 @@
             <transition name="fade" mode="out-in">
               <div class="content" v-if="$root.currentShowBox ==='home' &amp;&amp; !currentShowSubBox" key="home">
                 <div class="content__top-line">
-                  <h1 class="title">Caller Information</h1><a class="content__top-action" href="#3" @click.prevent="$root.currentShowSubBox = 'make-appointment'">
+                  <h1 class="title">Caller Information</h1><a class="content__top-action" href="#3" @click.prevent="$root.showSearchPatient()">
                     <div class="span inline-block">Search Patient</div>
                     <svg class="ico-svg__search-patient">
                       <use xlink:href="#search"></use>
                     </svg></a>
                 </div>
+                <transition name="fade" mode="out-in">
+                  <div class="content">
+                    <div class="content__box">
+                      <search-patient :show="$root.currentShowSearchPatient"></search-patient>
+                    </div>
+                  </div>
+                </transition>
                 <div class="ccase-managment">
                   <div class="ccase-managment__top">
                     <div class="ccase-managment__top-item"><span class="infoname">Caller Name</span>

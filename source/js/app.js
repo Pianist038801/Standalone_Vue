@@ -42,6 +42,7 @@ import statementReview from "../components/billing/statement-review.vue";
 import paymentConfirmation from "../components/billing/payment-confirmation.vue";
 import paymentResult from "../components/billing/payment-result.vue";
 import phoneBook from "../components/modal-component/phone-book.vue";
+import searchPatient from "../components/modal-component/search-patient.vue";
 
 let appData = {
   activePacient: null,
@@ -52,6 +53,7 @@ let appData = {
   paymentResult: null,
   userIsVerify: false,
   currentShowPhoneBook: false,
+  currentShowSearchPatient: false,
   callerName: 'a',
   callerPhone: 'a',
   callerType: 'a',
@@ -142,6 +144,11 @@ let App = new Vue({
       console.log('PHONE_CLICKED: !!!', vm.currentShowPhoneBook )
       vm.currentShowPhoneBook = !vm.currentShowPhoneBook;
     },
+
+    showSearchPatient: function () {
+      this.currentShowSearchPatient = !this.currentShowSearchPatient
+    },
+
     openNewWindow(url) {
       let strWindowFeatures = "menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes";
       window.open(url, "CNN_WindowName", strWindowFeatures);
@@ -185,7 +192,8 @@ let App = new Vue({
     paymentResult,
     phoneBook,
     Multiselect,
-    boardBlock
+    boardBlock,
+    searchPatient
   },
   watch: {
     currentShowBox: function () {

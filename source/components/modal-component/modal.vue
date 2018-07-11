@@ -213,10 +213,6 @@
         }
     }
 
-
-
-
-
     .title.mod--modal-appointment {
         margin-bottom: em(24,24);
     }
@@ -226,6 +222,7 @@
         min-height: em(30);
         align-items: center;
     }
+
     .modal-appointment__remind-days {
         .ui-input {
             width: em(50, 14);
@@ -240,30 +237,35 @@
     .modal-appointment__templates-checkbox {
         margin-bottom: em(24);
     }
+
     .modal-appointment__templates-messages {
         margin-bottom: em(24);
     }
+
     .ui-textarea.mod--sms {
         height: em(80, 14);
         min-height: em(80, 14);
     }
+    
     .modal-appointment__reason {
         margin-top: em(20);
         margin-bottom: em(24);
     }
+    
     .modal__content-row {
         lost-flex-container: row;
     }
+    
     .modal__content-col {
         lost-column: 1/2 2 em(100px);
     }
-
 
     .modal-appointment__remind {
         display: flex;
         min-height: em(30);
         align-items: center;
     }
+
     .modal-appointment__remind-days {
         .ui-input {
             width: em(50, 14);
@@ -362,6 +364,32 @@
         width: 100%;
         border-spacing: 0;
     }
+    .search-patient__table {
+        width: 100%;
+        margin-top: em(50);
+        border-spacing: 10;
+        border-width: 12;
+
+        td {
+            border-bottom: 2px solid transparent;
+            @extend %breakwords;
+            padding: em(6 4);
+            background-color:  rgb(233, 237, 245);
+        }
+
+        &.state--hold {
+            td {
+                background-color: #f9f9f9;
+            }
+        }
+        
+    }
+    .search-patient__table th {
+        background-color: rgb(107, 154, 208);
+        color: white;
+        font-size: em(22px);
+        padding: em(13 13);    
+    }
     .make-appointment__table-time {
         text-transform: uppercase;
     }
@@ -393,7 +421,6 @@
         text-transform: uppercase;
         letter-spacing: em(1.2px, 12);
         padding: em(10 18 30 18, 12);
-
         &:nth-child(2), &:nth-child(3) {
             text-align: left;
         }
@@ -491,10 +518,11 @@
     }
 
     .modal-appointment__info-lang {
-        margin-top: em(16);
+        margin-right: em(40);
         display: inline-block;
         vertical-align: top;
         min-width: em(200);
+        height: em(40);
     }
 
 
@@ -507,6 +535,4 @@
             min-width: em(160);
         }
     }
-
-
 </style>

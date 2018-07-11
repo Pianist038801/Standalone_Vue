@@ -66,7 +66,6 @@
                         legend.hide Book table
                         table.make-appointment__table
                             tr
-
                                 th TIME SLOTS
                                 th NAME
                                 th.g-align-center FACILITY

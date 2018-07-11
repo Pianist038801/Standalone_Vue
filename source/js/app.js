@@ -7,11 +7,13 @@ import {Tabs, Tab} from 'vue-tabs-component';
 import axios from 'axios';
 import VueBreadcrumbs from 'vue-breadcrumbs'
 import Multiselect from '../components/name-select/src/Multiselect.vue';
+import boardBlock from '../components/home/board-block.vue';
 
 Vue.use(Multiselect)
 Vue.use(VueBreadcrumbs)
 Vue.use(VueResource);
 Vue.use(VueMoment);
+Vue.use(boardBlock);
 Vue.component('tabs', Tabs);
 Vue.component('tab', Tab);
 import schedulingPage from "pages/scheduling.vue";
@@ -182,7 +184,8 @@ let App = new Vue({
     paymentConfirmation,
     paymentResult,
     phoneBook,
-    Multiselect
+    Multiselect,
+    boardBlock
   },
   watch: {
     currentShowBox: function () {

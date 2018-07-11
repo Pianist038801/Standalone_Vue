@@ -67,7 +67,11 @@
             <transition name="fade" mode="out-in">
               <div class="content" v-if="$root.currentShowBox ==='home' &amp;&amp; !currentShowSubBox" key="home">
                 <div class="content__top-line">
-                  <h1 class="title">Caller Information</h1>
+                  <h1 class="title">Caller Information</h1><a class="content__top-action" href="#3" @click.prevent="$root.currentShowSubBox = 'make-appointment'">
+                    <div class="span inline-block">Search Patient</div>
+                    <svg class="ico-svg__search-patient">
+                      <use xlink:href="#search"></use>
+                    </svg></a>
                 </div>
                 <div class="ccase-managment">
                   <div class="ccase-managment__top">
@@ -88,9 +92,37 @@
                   <div class="ccase-managment__top__bottom">
                     <textarea class="full-width" :value="$root._data.callerNotes" readonly></textarea>
                   </div>
+                  <div class="ccase-managment__top">
+                    <div class="ccase-managment__top-rect inline-block">
+                      <board-block :count="2" :text="'Past Appointments'" :col="'rgb(255,0,0)'"></board-block>
+                    </div>
+                    <div class="ccase-managment__top-rect inline-block">
+                      <board-block :count="8" :text="'Current Appointments'" :col="'green'"></board-block>
+                    </div>
+                    <div class="ccase-managment__top-rect inline-block">
+                      <board-block :count="7" :text="'Future Appointments'" :col="'grey'"></board-block>
+                    </div>
+                    <div class="ccase-managment__top-rect inline-block">
+                      <board-block :count="6" :text="'Cancelled/No Shows'" :col="'pink'"></board-block>
+                    </div>
+                  </div>
+                  <div class="ccase-managment__top">
+                    <div class="ccase-managment__top-rect inline-block">
+                      <board-block :count="5" :text="'Bills'" :col="'grey'"></board-block>
+                    </div>
+                    <div class="ccase-managment__top-rect inline-block">
+                      <board-block :count="4" :text="'Referrals'" :col="'pink'"></board-block>
+                    </div>
+                    <div class="ccase-managment__top-rect inline-block">
+                      <board-block :count="1" :text="'Outreach'" :col="'rgb(255,0,0)'"></board-block>
+                    </div>
+                    <div class="ccase-managment__top-rect inline-block">
+                      <board-block :count="2" :text="'Inbound'" :col="'green'"></board-block>
+                    </div>
+                  </div>
                 </div>
                 <div class="content__box">
-                  <journey-map :info="$root._data.Patients[$root.activePacient]">   </journey-map>
+                  <journey-map :info="$root._data.Patients[$root.activePacient]"></journey-map>
                 </div>
               </div>
               <div class="content" v-if="$root.currentShowBox ==='scheduling' &amp;&amp; !currentShowSubBox" key="scheduling">

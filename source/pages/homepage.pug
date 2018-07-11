@@ -21,6 +21,10 @@ block content
                     .content(v-if="$root.currentShowBox ==='home' && !currentShowSubBox", key="home")
                         .content__top-line
                             h1.title Caller Information
+                            a(href="#3", @click.prevent="$root.currentShowSubBox = 'make-appointment'").content__top-action
+                                .span().inline-block Search Patient
+                                svg.ico-svg__search-patient
+                                    use(xlink:href="#search")
                         div().ccase-managment
                             .ccase-managment__top
                                 .ccase-managment__top-item
@@ -54,11 +58,29 @@ block content
                                 span().infoname Notes
                             .ccase-managment__top__bottom
                                 textarea(:value="$root._data.callerNotes" readonly).full-width
- 
+                        
+                            .ccase-managment__top
+                                .ccase-managment__top-rect.inline-block
+                                    board-block(:count='2', :text="'Past Appointments'", :col="'rgb(255,0,0)'")
+                                .ccase-managment__top-rect.inline-block
+                                    board-block(:count='8', :text="'Current Appointments'", :col="'green'")
+                                .ccase-managment__top-rect.inline-block
+                                    board-block(:count='7', :text="'Future Appointments'", :col="'grey'")
+                                .ccase-managment__top-rect.inline-block
+                                    board-block(:count='6', :text="'Cancelled/No Shows'", :col="'pink'")
+                            .ccase-managment__top
+                                .ccase-managment__top-rect.inline-block
+                                    board-block(:count='5', :text="'Bills'", :col="'grey'")
+                                .ccase-managment__top-rect.inline-block
+                                    board-block(:count='4', :text="'Referrals'", :col="'pink'")
+                                .ccase-managment__top-rect.inline-block
+                                    board-block(:count='1', :text="'Outreach'", :col="'rgb(255,0,0)'")
+                                .ccase-managment__top-rect.inline-block
+                                    board-block(:count='2', :text="'Inbound'", :col="'green'")
                         .content__box
-                            journey-map(:info="$root._data.Patients[$root.activePacient]")    
+                            journey-map(:info="$root._data.Patients[$root.activePacient]")
                     
-
+                        
                     //-show scheduling
                     .content(v-if="$root.currentShowBox ==='scheduling' && !currentShowSubBox", key="scheduling")
                         

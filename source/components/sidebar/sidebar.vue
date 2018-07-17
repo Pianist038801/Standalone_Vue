@@ -131,18 +131,18 @@
                         console.log(i);
                     }
                 });
-                console.log('2_currentID=');
-                console.log(vm.currentPacient);
+                console.log('vm.$root.activePacient');
+                console.log(vm.$root.activePacient);
             }
         },
         created() {
-            //this.currentPacientName = this.pacients[this.$root.$data.activePacient].Name;
+            this.currentPacientName = this.pacients[this.$root.$data.activePacient].Name;
             
         },
         mounted() {
             let vm = this;
             console.log ("this is" , this);
-            //vm.getCurrentIndexPacient();
+            vm.getCurrentIndexPacient();
         },
         beforeDestroy() {
 

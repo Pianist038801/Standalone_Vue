@@ -101,30 +101,30 @@
                   </div>
                   <div class="ccase-managment__top">
                     <div class="ccase-managment__top-rect inline-block">
-                      <board-block :count="2" :text="'Past Appointments'" :col="'rgb(255,0,0)'"></board-block>
+                      <board-block :count="$root.activePacient==0?2:1" :text="'Past Appointments'" :col="'rgb(255,0,0)'"></board-block>
                     </div>
                     <div class="ccase-managment__top-rect inline-block">
-                      <board-block :count="8" :text="'Current Appointments'" :col="'green'"></board-block>
+                      <board-block :count="$root.activePacient==0?3:8" :text="'Current Appointments'" :col="'green'"></board-block>
                     </div>
                     <div class="ccase-managment__top-rect inline-block">
-                      <board-block :count="7" :text="'Future Appointments'" :col="'grey'"></board-block>
+                      <board-block :count="$root.activePacient==0?2:7" :text="'Future Appointments'" :col="'grey'"></board-block>
                     </div>
                     <div class="ccase-managment__top-rect inline-block">
-                      <board-block :count="6" :text="'Cancelled/No Shows'" :col="'pink'"></board-block>
+                      <board-block :count="$root.activePacient==0?4:6" :text="'Cancelled/No Shows'" :col="'pink'"></board-block>
                     </div>
                   </div>
                   <div class="ccase-managment__top">
                     <div class="ccase-managment__top-rect inline-block">
-                      <board-block :count="5" :text="'Bills'" :col="'grey'"></board-block>
+                      <board-block :count="$root.activePacient==0?3:5" :text="'Bills'" :col="'grey'"></board-block>
                     </div>
                     <div class="ccase-managment__top-rect inline-block">
-                      <board-block :count="4" :text="'Referrals'" :col="'pink'"></board-block>
+                      <board-block :count="$root.activePacient==0?5:4" :text="'Referrals'" :col="'pink'"></board-block>
                     </div>
                     <div class="ccase-managment__top-rect inline-block">
-                      <board-block :count="1" :text="'Outreach'" :col="'rgb(255,0,0)'"></board-block>
+                      <board-block :count="$root.activePacient==0?7:1" :text="'Outreach'" :col="'rgb(255,0,0)'"></board-block>
                     </div>
                     <div class="ccase-managment__top-rect inline-block">
-                      <board-block :count="2" :text="'Inbound'" :col="'green'"></board-block>
+                      <board-block :count="$root.activePacient==0?6:2" :text="'Inbound'" :col="'green'"></board-block>
                     </div>
                   </div>
                 </div>

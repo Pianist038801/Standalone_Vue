@@ -11,7 +11,7 @@
                             .modal-appointment__info-lang
                                 multiselect(
                                 v-model="phoneNumber",
-                                :options="['Search EPIC','Search All']",
+                                :options="['Search EPIC','Search All', 'Search CENTER']",
                                 @input="",
                                 :searchable="false",
                                 :allowEmpty="false",
@@ -23,16 +23,16 @@
                             .modal-appointment__info-lang
                                 multiselect(
                                 v-model="searchType",
-                                :options="['Patient Last Name','Patient Phone Number']",
+                                :options="['Patient MRN', 'Patient First Name', 'Patient Last Name', 'Patient DOB','Patient Zip', 'Patient Phone Number', 'Patient SSN']",
                                 @input="showType",
                                 :searchable="false",
                                 :allowEmpty="false",
                                 :showLabels="false",
                                 placeholder="Select Criteria"
                                 ).ui-multiselect.ui-multiselect--default
-                            input(v-model="searchKey").modal-appointment__info-lang
-                            a(href="#3", @click="").ui-btn.ui-btn--skin-default.ui-btn--theme-primary-border Search
-                
+                            input(v-model="searchTemp").modal-appointment__info-lang
+                            a(href="#3", @click="searchKey=searchTemp==''?-1:searchTemp").ui-btn.ui-btn--skin-default.ui-btn--theme-primary-border Search
+
             table.search-patient__table
                 tr
                     th.g-align-center MRN
@@ -41,16 +41,16 @@
                     th.g-align-center DOB
                     th.g-align-center ZIP
                     th.g-align-center Phone Number
-                    th.g-align-center Bed Number
+                    th.g-align-center SSN
                 tr(v-for="(patient, index) in $root._data.Patients",v-bind:style="{color: patient==chosen?'red':'black'}", v-if="ifShow(patient)==true" @click="clickRow(patient)")
                 
                     td().g-align-center {{patient.MRN}}
-                    td.g-align-center {{patient.Name.split(' ')[0]}}
                     td.g-align-center {{patient.Name.split(' ')[1]}}
-                    td.g-align-center {{patient.DateOfBirth}}
+                    td.g-align-center {{patient.Name.split(' ')[0]}}
+                    td.g-align-center {{patient.DateOfBirth.split(' ')[0]}}
                     td.g-align-center Zip
                     td.g-align-center {{patient.PhoneNumber}}
-                    td.g-align-center Bed Number
+                    td.g-align-center {{patient.SSN}}
                 //- tr(v-for="(item, index) in existingApointmentSlots", :class="{'state--hold': item.Status === 'On Hold' }").make-appointment__table-tr
 
                 //-     td.make-appointment__table-time {{item.StartTime | moment("HH:mm")}} - {{item.EndTime | moment("HH:mm A")}}
@@ -85,16 +85,24 @@
             ifShow(patient){
                 console.log('searchsType')
                 console.log(this.searchType);
-                if(this.searchType=='') return true;
-                if(this.searchType=='Patient Phone Number')
-                {
-                    if(patient.PhoneNumber.indexOf(this.searchKey)>-1)
-                        return true;
-                    return false;
+                if(this.searchKey==-1) return true;
+                if(this.searchType=='') return false;
+                switch(this.searchType){
+                    case 'Patient MRN':
+                        return patient.MRN.indexOf(this.searchKey)>-1 ? true : false
+                    case 'Patient First Name':
+                        return patient.Name.split(' ')[1].indexOf(this.searchKey)>-1 ? true : false
+                    case 'Patient Last Name':
+                        return patient.Name.split(' ')[0].indexOf(this.searchKey)>-1 ? true : false
+                    case 'Patient DOB':
+                        return patient.DateOfBirth.split(' ')[0].indexOf(this.searchKey)>-1 ? true : false
+                    case 'Patient Zip':
+                        return true
+                    case 'Patient Phone Number':
+                        return patient.PhoneNumber.indexOf(this.searchKey)>-1 ? true : false
+                    case 'Patient SSN':
+                        return patient.SSN.indexOf(this.searchKey)>-1 ? true : false
                 }
-                if(patient.Name.split(' ')[1].indexOf(this.searchKey)>-1)
-                    return true;
-                return false;
             },
             showType(){
                 console.log(searchType);
@@ -148,7 +156,8 @@
                 phoneNumber: '',
                 searchType: '',
                 phoneNote: '',
-                searchKey: '',  
+                searchKey: '',
+                searchTemp: '',
                 showRecent: true,
                 chosen: null,
             }

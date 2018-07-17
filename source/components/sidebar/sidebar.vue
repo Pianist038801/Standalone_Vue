@@ -95,6 +95,7 @@
 <script>
 
     import Multiselect from '../name-select/src/Multiselect.vue';
+
     export default {
         props: ['pacients', 'active'],
         components: {
@@ -102,8 +103,6 @@
         },
         data() {
             return {
-                currentPacient: 0,
-                currentPacientName: '',
                 visible: false,
                 patientNames: [],
             }
@@ -119,28 +118,56 @@
             },
             getCurrentIndexPacient(){
                 let vm = this;
+                console.log('currentName=');
                 console.log(vm.currentPacientName);
+                console.log('1_currentID=');
+                console.log(vm.currentPacient);
                 vm.pacients.forEach((item, i) => {
+                    
                     if(item.Name === vm.currentPacientName) {
                         vm.$root.activePacient = i;
-                        vm.currentPacient = i;
+                        //vm.currentPacient = i;
+                        console.log(item.Name + '+' + vm.currentPacientName)
+                        console.log(i);
                     }
                 });
+                console.log('2_currentID=');
+                console.log(vm.currentPacient);
             }
         },
         created() {
-            this.currentPacientName = this.pacients[this.$root.$data.activePacient].Name;
+            //this.currentPacientName = this.pacients[this.$root.$data.activePacient].Name;
             
         },
         mounted() {
             let vm = this;
             console.log ("this is" , this);
-            vm.getCurrentIndexPacient();
+            //vm.getCurrentIndexPacient();
         },
         beforeDestroy() {
 
         },
         computed: {
+            currentPacient: {
+                // getter
+                get: function () {
+                return this.$store.state.pacientId;
+                },
+                // setter
+                set: function (newValue) {
+                this.$store.dispatch('setId', newValue)
+                }
+            },
+            currentPacientName: {
+                // getter
+                get: function () {
+                return this.$store.state.pacientName;
+                },
+                // setter
+                set: function (newValue) {
+                this.$store.dispatch('setName', newValue);
+                }
+            },
             // get only
             sizePacients: function () {
 
@@ -163,7 +190,7 @@
         watch: {
             'currentPacientName': function (val) {
                 this.getCurrentIndexPacient();
-            },
+            }, 
             'active': function(val){
                 this.currentPacientName = this.pacients[val].Name;
             }

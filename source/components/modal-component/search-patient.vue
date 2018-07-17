@@ -64,7 +64,7 @@
                 //-     td.g-align-center.make-appointment__table-action(v-else)
                 //-         a(href="#3", @click.prevent="showModal(index)").ui-btn.ui-btn--skin-default.ui-btn--theme-primary-border.mod--block book now
             .modal-appointment__row
-                    a(href="#3", @click="$refs.modalphone.close()").ui-btn.ui-btn--skin-default.ui-btn--theme-primary-border Select
+                    a(href="#3", @click="onSelect").ui-btn.ui-btn--skin-default.ui-btn--theme-primary-border Select
 
 </template>
 <script> 
@@ -73,7 +73,7 @@
     import Multiselect from 'vue-multiselect';
     import Vue from 'vue'; 
     import axios from 'axios';
-
+    import store from '../../js/store.js';
 
     export default {
         props: ['show'],
@@ -82,6 +82,15 @@
             Multiselect,
         },
         methods: {
+            onSelect(){
+                this.$refs.modalphone.close()
+                console.log('THIS.CHOSEN=');
+                console.log(this.chosen);
+                if(this.chosen.Name=='Johns Sarah')
+                    store.dispatch('setId', 1)
+                else
+                    store.dispatch('setId', 0)
+            },
             ifShow(patient){
                 console.log('searchsType')
                 console.log(this.searchType);

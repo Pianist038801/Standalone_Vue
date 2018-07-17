@@ -1,16 +1,18 @@
 // imports
 // ******************************************
 import Vue from 'vue';
+import Vuex from 'vuex'
+
 import VueResource from 'vue-resource';
 import VueMoment from 'vue-moment'; 
 import {Tabs, Tab} from 'vue-tabs-component';
 import axios from 'axios';
-import VueBreadcrumbs from 'vue-breadcrumbs'
 import Multiselect from '../components/name-select/src/Multiselect.vue';
 import boardBlock from '../components/home/board-block.vue';
+import store from './store.js';
 
+Vue.use(Vuex)
 Vue.use(Multiselect)
-Vue.use(VueBreadcrumbs)
 Vue.use(VueResource);
 Vue.use(VueMoment);
 Vue.use(boardBlock);
@@ -68,6 +70,7 @@ let appData = {
 
 let App = new Vue({
   data: appData,
+  store,
   // router,
   created(){
     let vm = this;

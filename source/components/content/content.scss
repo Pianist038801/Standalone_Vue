@@ -18,6 +18,12 @@
 .ccase-managment__top {
   lost-flex-container: row;
 }
+.ccase-managment__top_boxes {
+  
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+}
 
 .ccase-managment__top__bottom {
   lost-flex-container: row;
@@ -33,8 +39,6 @@ li {
 }
 
 .ccase-managment__top-rect {
-  lost-column: 1/4 4 em(240px);
-  margin-bottom: em(30);
 }
 
 .ccase-managment__top-item {

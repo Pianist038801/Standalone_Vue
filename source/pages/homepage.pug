@@ -20,12 +20,11 @@ block content
                     //-show home subPage
                     
                     .content(v-if="$root.currentShowBox ==='home' && !currentShowSubBox", key="home")
-                        a(href='#3') Inbound(Option 3 in IVR) / 
-                        a(href='#4') Transferred by Agent 113 /
+                        h3() Inbound(Option 3 in IVR)  /  Transferred by Agent 113  /
                         .content__top-line
                             h1.title Caller Information
                             a(href="#3", @click.prevent="$root.showSearchPatient()").content__top-action
-                                .span().inline-block Search Patient
+                                h1.title.inline-block Search Patient
                                 svg.ico-svg__search-patient
                                     use(xlink:href="#search")
                         transition(name="fade", mode='out-in')
@@ -66,7 +65,7 @@ block content
                             .ccase-managment__top__bottom
                                 textarea(:value="$root._data.callerNotes" readonly).full-width
                         
-                            .ccase-managment__top
+                            .ccase-managment__top_boxes
                                 .ccase-managment__top-rect.inline-block
                                     board-block(:count='$root.activePacient==0?2:1', :text="'Past Appointments'", :col="'rgb(255,0,0)'")
                                 .ccase-managment__top-rect.inline-block
@@ -75,7 +74,7 @@ block content
                                     board-block(:count='$root.activePacient==0?2:7', :text="'Future Appointments'", :col="'grey'")
                                 .ccase-managment__top-rect.inline-block
                                     board-block(:count='$root.activePacient==0?4:6', :text="'Cancelled/No Shows'", :col="'pink'")
-                            .ccase-managment__top
+                            .ccase-managment__top_boxes
                                 .ccase-managment__top-rect.inline-block
                                     board-block(:count='$root.activePacient==0?3:5', :text="'Bills'", :col="'grey'")
                                 .ccase-managment__top-rect.inline-block

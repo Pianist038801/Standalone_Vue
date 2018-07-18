@@ -11,7 +11,7 @@
                             .modal-appointment__info-lang
                                 multiselect(
                                 v-model="phoneNumber",
-                                :options="['Search EPIC','Search All', 'Search CENTER']",
+                                :options="['Search All', 'Search EPIC', 'Search CERNER']",
                                 @input="",
                                 :searchable="false",
                                 :allowEmpty="false",

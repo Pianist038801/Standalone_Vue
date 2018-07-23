@@ -67,6 +67,7 @@ let appData = {
   callerHospital: 'NA',
   patientNames: ['a','s'],
   dropdownCallerName: '',
+  agentID: '',
 };
 
 let App = new Vue({
@@ -97,10 +98,13 @@ let App = new Vue({
     onKeyPress: function(event) {
       if(event.keyCode==13)
       {
+        this.addNewCallerName = false;
+        if(this.newCallerName=='')
+          return;
         let temp = this.patientNames.slice(0);
         temp.splice(1,0,this.newCallerName);
         this.patientNames = temp;
-        this.addNewCallerName = false;
+        
       }
     },
     releaseTempDNIS: function(tempDNIS) {
@@ -145,6 +149,8 @@ let App = new Vue({
             vm.callerType = responseData.callerType;
             vm.callerNotes = responseData.notes;
             vm.activePacient = responseData.patientName.indexOf('Sarah') > -1 ? 1 : 0;
+            vm.agentID = responseData.phantom3;
+            console.log('AGID=', vm.agentID);
             vm.releaseTempDNIS(tempDNIS);
           }
       });

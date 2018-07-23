@@ -51,22 +51,23 @@ let appData = {
   showImageModal: 0,
   currentShowBox: null,
   currentShowSubBox: null,
+  addNewCallerName: false,
   billItem: null,
   paymentResult: null,
   userIsVerify: false,
   currentShowPhoneBook: false,
   currentShowSearchPatient: false,
+  newCallerName: '',
   callerName: 'a',
-  callerPhone: 'a',
+  callerPhone: '',
   callerType: 'a',
-  callerNotes: 'a',
+  callerNotes: '',
   callDestination: 'a',
   callerTransferLocation: 'NA',
   callerHospital: 'NA',
   patientNames: ['a','s'],
-  dropdownCallerName: ''
+  dropdownCallerName: '',
 };
-
 
 let App = new Vue({
   data: appData,
@@ -86,8 +87,21 @@ let App = new Vue({
     });
   },
   methods: {
-    getCurrentIndexPacient: function() {
-
+    getCurrentIndexPacient: function(txt) {
+      if(txt == 'add New')
+      {
+        this.newCallerName='';
+        this.addNewCallerName = true;
+      }
+    },
+    onKeyPress: function(event) {
+      if(event.keyCode==13)
+      {
+        let temp = this.patientNames.slice(0);
+        temp.splice(1,0,this.newCallerName);
+        this.patientNames = temp;
+        this.addNewCallerName = false;
+      }
     },
     releaseTempDNIS: function(tempDNIS) {
       axios({method: 'post',
@@ -147,11 +161,9 @@ let App = new Vue({
       console.log('PHONE_CLICKED: !!!', vm.currentShowPhoneBook )
       vm.currentShowPhoneBook = !vm.currentShowPhoneBook;
     },
-
     showSearchPatient: function () {
       this.currentShowSearchPatient = !this.currentShowSearchPatient
     },
-
     openNewWindow(url) {
       let strWindowFeatures = "menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes";
       window.open(url, "CNN_WindowName", strWindowFeatures);
@@ -159,7 +171,7 @@ let App = new Vue({
     showStatementReview: function(item) {
       this.currentShowBox = 'statement_review';
       console.log('*&&**&(*&(*&*(&', item);
-      this.billItem = item;  
+      this.billItem = item;
     },
     payBill: function(item) {
       this.currentShowBox = 'payment_confirmation';

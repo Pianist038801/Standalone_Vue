@@ -36,6 +36,7 @@ block content
                                 .ccase-managment__top-item
                                     span().infoname Caller Name
                                     multiselect(
+                                        v-if="$root._data.addNewCallerName===false",
                                         v-model="$root._data.dropdownCallerName",
                                         :options="$root._data.patientNames",
                                         @input="$root.getCurrentIndexPacient",
@@ -43,7 +44,8 @@ block content
                                         :allowEmpty="false",
                                         :showLabels="false"
                                     ).ui-multiselect.ui-multiselect--default.inline-block
-
+                                    input(v-if="$root._data.addNewCallerName", v-model="$root._data.newCallerName", :value="$root._data.callerPhone", @keyup="$root.onKeyPress").infovalue
+                                    
                                 .ccase-managment__top-item
                                     span().infoname Caller Phone #
                                     input(:value="$root._data.callerPhone" readonly).infovalue
@@ -51,7 +53,7 @@ block content
                                 .ccase-managment__top-item
                                     span().infoname Call Type
                                     multiselect(
-                                        :options="['Patient', 'Parent', 'Spouse', 'Agent', 'Nurse', 'Physician']",
+                                        :options="['Patient', 'Parent', 'Family', 'Agent', 'Nurse', 'Physician']",
                                         :searchable="false",
                                         :allowEmpty="false",
                                         :showLabels="false"
@@ -96,22 +98,32 @@ block content
                             .ccase-managment__top
                                 .ccase-managment__top-item
                                     span().infoname Caller Name
-                                    input(:value="$root._data.callerName" readonly).infovalue
-
+                                    multiselect(
+                                        v-if="$root._data.addNewCallerName===false",
+                                        v-model="$root._data.dropdownCallerName",
+                                        :options="$root._data.patientNames",
+                                        @input="$root.getCurrentIndexPacient",
+                                        :searchable="false",
+                                        :allowEmpty="false",
+                                        :showLabels="false"
+                                    ).ui-multiselect.ui-multiselect--default.inline-block
+                                    input(v-if="$root._data.addNewCallerName", v-model="$root._data.newCallerName", :value="$root._data.callerPhone", @keyup="$root.onKeyPress").infovalue
+                                    
                                 .ccase-managment__top-item
                                     span().infoname Caller Phone #
                                     input(:value="$root._data.callerPhone" readonly).infovalue
 
                                 .ccase-managment__top-item
                                     span().infoname Call Type
-                                    input(:value="$root._data.callerType" readonly).infovalue
+                                    multiselect(
+                                        :options="['Patient', 'Parent', 'Family', 'Agent', 'Nurse', 'Physician']",
+                                        :searchable="false",
+                                        :allowEmpty="false",
+                                        :showLabels="false"
+                                    ).ui-multiselect.ui-multiselect--default.inline-block
 
                                 .ccase-managment__top-item
-                                    span().infoname Transferred from
-                                    input(:value="$root._data.callerTransferLocation" readonly).infovalue
-
-                                .ccase-managment__top-item
-                                    span().infoname Hospital
+                                    span().infoname Other
                                     input(:value="$root._data.callerHospital" readonly).infovalue
                             .ccase-managment__top
                                 span().infoname Notes
@@ -130,6 +142,43 @@ block content
                     //-show case-managment
                     .content(v-if="$root.currentShowBox ==='case-managment' && !currentShowSubBox", key="case-managment")
                         .content__top-line
+                            h1.title Caller Information
+                        .ccase-managment
+                            .ccase-managment__top
+                                .ccase-managment__top-item
+                                    span().infoname Caller Name
+                                    multiselect(
+                                        v-if="$root._data.addNewCallerName===false",
+                                        v-model="$root._data.dropdownCallerName",
+                                        :options="$root._data.patientNames",
+                                        @input="$root.getCurrentIndexPacient",
+                                        :searchable="false",
+                                        :allowEmpty="false",
+                                        :showLabels="false"
+                                    ).ui-multiselect.ui-multiselect--default.inline-block
+                                    input(v-if="$root._data.addNewCallerName", v-model="$root._data.newCallerName", :value="$root._data.callerPhone", @keyup="$root.onKeyPress").infovalue
+                                    
+                                .ccase-managment__top-item
+                                    span().infoname Caller Phone #
+                                    input(:value="$root._data.callerPhone" readonly).infovalue
+
+                                .ccase-managment__top-item
+                                    span().infoname Call Type
+                                    multiselect(
+                                        :options="['Patient', 'Parent', 'Family', 'Agent', 'Nurse', 'Physician']",
+                                        :searchable="false",
+                                        :allowEmpty="false",
+                                        :showLabels="false"
+                                    ).ui-multiselect.ui-multiselect--default.inline-block
+
+                                .ccase-managment__top-item
+                                    span().infoname Other
+                                    input(:value="$root._data.callerHospital" readonly).infovalue
+                            .ccase-managment__top
+                                span().infoname Notes
+                            .ccase-managment__top__bottom
+                                textarea(:value="$root._data.callerNotes" readonly).full-width
+                        .content__top-line
                             h1.title Case Managment
                         .content__box
                             c-managment
@@ -144,22 +193,32 @@ block content
                             .ccase-managment__top
                                 .ccase-managment__top-item
                                     span().infoname Caller Name
-                                    input(:value="$root._data.callerName" readonly).infovalue
-
+                                    multiselect(
+                                        v-if="$root._data.addNewCallerName===false",
+                                        v-model="$root._data.dropdownCallerName",
+                                        :options="$root._data.patientNames",
+                                        @input="$root.getCurrentIndexPacient",
+                                        :searchable="false",
+                                        :allowEmpty="false",
+                                        :showLabels="false"
+                                    ).ui-multiselect.ui-multiselect--default.inline-block
+                                    input(v-if="$root._data.addNewCallerName", v-model="$root._data.newCallerName", :value="$root._data.callerPhone", @keyup="$root.onKeyPress").infovalue
+                                    
                                 .ccase-managment__top-item
                                     span().infoname Caller Phone #
                                     input(:value="$root._data.callerPhone" readonly).infovalue
 
                                 .ccase-managment__top-item
                                     span().infoname Call Type
-                                    input(:value="$root._data.callerType" readonly).infovalue
+                                    multiselect(
+                                        :options="['Patient', 'Parent', 'Family', 'Agent', 'Nurse', 'Physician']",
+                                        :searchable="false",
+                                        :allowEmpty="false",
+                                        :showLabels="false"
+                                    ).ui-multiselect.ui-multiselect--default.inline-block
 
                                 .ccase-managment__top-item
-                                    span().infoname Transferred from
-                                    input(:value="$root._data.callerTransferLocation" readonly).infovalue
-
-                                .ccase-managment__top-item
-                                    span().infoname Hospital
+                                    span().infoname Other
                                     input(:value="$root._data.callerHospital" readonly).infovalue
                             .ccase-managment__top
                                 span().infoname Notes

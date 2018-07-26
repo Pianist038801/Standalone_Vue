@@ -16,7 +16,7 @@
     <link href="spark-widget/widget-space/main.css" rel="stylesheet">
     <script src="spark-widget/bundle.js"></script>
     <title>Home page</title>
-  <link href="css/style.css?b5ab4fbbacdec017c061" rel="stylesheet"></head>
+  <link href="css/style.css?08de0660fb8306d3701d" rel="stylesheet"></head>
   <body class="l-body ">
     <!-- page-->
     <div class="l-page" id="app">
@@ -66,7 +66,6 @@
             </transition>
             <transition name="fade" mode="out-in">
               <div class="content" v-if="$root.currentShowBox ==='home' &amp;&amp; !currentShowSubBox" key="home">
-                <h3>Inbound(Option 3 in IVR)  /  Transferred by Agent {{$root._data.agentID}} /</h3>
                 <div class="content__top-line">
                   <h1 class="title">Caller Information</h1><a class="content__top-action" href="#3" @click.prevent="$root.showSearchPatient()">
                     <h1 class="title inline-block">Search Patient</h1>
@@ -126,7 +125,7 @@
                       <board-block :count="$root.activePacient==0?7:1" :text="'Outreach'" :col="'rgb(255,0,0)'"></board-block>
                     </div>
                     <div class="ccase-managment__top-rect inline-block">
-                      <board-block :count="$root.activePacient==0?6:2" :text="'Inbound'" :col="'green'"></board-block>
+                      <board-block :count="$root.activePacient==0?6:2" :text="'Grace Paz'" :col="'green'"></board-block>
                     </div>
                   </div>
                 </div>
@@ -322,5 +321,5 @@
       </div>
     </div>
     <!-- End page-->
-  <script type="text/javascript" src="js/app.js?b5ab4fbbacdec017c061"></script></body>
+  <script type="text/javascript" src="js/app.js?08de0660fb8306d3701d"></script></body>
 </html>

@@ -32,7 +32,7 @@
             .journey-map__line-item.wrapp-tooltip(v-if="journey_select.type!=''")
                 .tooltip
                     .tooltip__in
-                        .tooltip__note <b>Call type</b>: Inbound
+                        .tooltip__note <b>Call type</b>: Grace Paz
                         .tooltip__note <b>Date/Time</b>: {{journey_select.name}}
                         .tooltip__note <b>SMS</b>:  Appintment Confimation
                         .tooltip__note <b>Customet Action</b>: Patient clicked yes

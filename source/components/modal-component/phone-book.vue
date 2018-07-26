@@ -13,7 +13,7 @@
                             .modal-appointment__info-lang
                                 multiselect(
                                 v-model="phoneNumber",
-                                :options="['Urology (214-701-5489)','Radiology (214-212-0912)','Cardiology (972-358-6547)','Anesthesiology (972-891-8656)', 'Contact Center (972-217-8925)']",
+                                :options="['Urology (469-899-1224)','Radiology (214-212-0912)','Cardiology (972-358-6547)','Anesthesiology (972-891-8656)', 'Contact Center (972-217-8925)']",
                                 @input="",
                                 :searchable="false",
                                 :allowEmpty="false",
@@ -50,11 +50,11 @@
                         div()
                             ul(v-if="showRecent")
                                 li() 972-888-2938
-                                li() Urology (214-701-5489)
+                                li() Urology (469-899-1224)
                                 li() Front Office
                                 li() Cardiology
                             ul(v-if="!showRecent")
-                                li() Urology (214-701-5489)
+                                li() Urology (469-899-1224)
                                 li() Radiology (214-212-0912)
                                 li() Cardiology (972-358-6547)
                                 li() Anesthesiology (972-891-8656)

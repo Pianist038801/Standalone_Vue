@@ -21,6 +21,7 @@ Vue.component('tab', Tab);
 import schedulingPage from "pages/scheduling.vue";
 
 import appointment from "../components/appointment/appointment.vue";
+import referral from "../components/referral/referral.vue";
 import journeyMap from "../components/journey-map/journey-map.vue";
 
 
@@ -205,6 +206,7 @@ let App = new Vue({
   components: {
     sidebarPacient,
     appointment,
+    referral,
     journeyMap,
     patientInfo,
     pharmacy,

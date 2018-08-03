@@ -54,6 +54,7 @@ block content
                                     multiselect(
                                         :options="['Patient', 'Parent', 'Family', 'Agent', 'Nurse', 'Physician']",
                                         :searchable="false",
+                                        v-model="$root._data.dropdownCallerType",
                                         :allowEmpty="false",
                                         :showLabels="false"
                                     ).ui-multiselect.ui-multiselect--default.inline-block

@@ -16,7 +16,7 @@
     <link href="spark-widget/widget-space/main.css" rel="stylesheet">
     <script src="spark-widget/bundle.js"></script>
     <title>Home page</title>
-  <link href="css/style.css?6b69051dfd6d93d47637" rel="stylesheet"></head>
+  <link href="css/style.css?ab050bb878d51c87c0b8" rel="stylesheet"></head>
   <body class="l-body ">
     <!-- page-->
     <div class="l-page" id="app">
@@ -90,7 +90,7 @@
                       <input class="infovalue" :value="$root._data.callerPhone" readonly>
                     </div>
                     <div class="ccase-managment__top-item"><span class="infoname">Call Type</span>
-                      <multiselect class="ui-multiselect ui-multiselect--default inline-block" :options="['Patient', 'Parent', 'Family', 'Agent', 'Nurse', 'Physician']" :searchable="false" :allowEmpty="false" :showLabels="false"></multiselect>
+                      <multiselect class="ui-multiselect ui-multiselect--default inline-block" :options="['Patient', 'Parent', 'Family', 'Agent', 'Nurse', 'Physician']" :searchable="false" v-model="$root._data.dropdownCallerType" :allowEmpty="false" :showLabels="false"></multiselect>
                     </div>
                     <div class="ccase-managment__top-item"><span class="infoname">Other</span>
                       <input class="infovalue" :value="$root._data.callerHospital" readonly>
@@ -321,5 +321,5 @@
       </div>
     </div>
     <!-- End page-->
-  <script type="text/javascript" src="js/app.js?6b69051dfd6d93d47637"></script></body>
+  <script type="text/javascript" src="js/app.js?ab050bb878d51c87c0b8"></script></body>
 </html>

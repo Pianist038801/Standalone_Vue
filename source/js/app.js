@@ -47,7 +47,7 @@ import phoneBook from "../components/modal-component/phone-book.vue";
 import searchPatient from "../components/modal-component/search-patient.vue";
 
 let appData = {
-  activePacient: null,
+  activePacient: 1,
   showImageModal: 0,
   currentShowBox: null,
   currentShowSubBox: null,
@@ -58,17 +58,19 @@ let appData = {
   currentShowPhoneBook: false,
   currentShowSearchPatient: false,
   newCallerName: '',
-  callerName: 'a',
-  callerPhone: '',
-  callerType: 'a',
-  callerNotes: '',
+  callerName: 'Johns Jacobs',
+  callerPhone: '+1 214 701 5489',
+  callerType: 'Parent',
+  callerNotes: 'Transferred from Agent at Contact Center in regards to Speciality Appointment',
   callDestination: 'a',
   callerTransferLocation: 'NA',
   callerHospital: 'NA',
   patientNames: ['a','s'],
-  dropdownCallerName: '',
+  dropdownCallerName: 'Johns Jacobs',
+  dropdownCallerType: 'Parent',
   agentID: '',
 };
+ 
 
 let App = new Vue({
   data: appData,
@@ -80,7 +82,7 @@ let App = new Vue({
   },
   mounted() {
     let vm = this;
-    vm.activePacient = 0;
+    vm.activePacient = 1;
     vm.currentShowBox = 'home';
     vm.spaceWidget =  window.ciscosparkClient();
     Vue.http.get('demo-credentials.json').then((response) => {
@@ -139,20 +141,25 @@ let App = new Vue({
       )
       .then(function(response){
           console.log('Get_CallInfo_Axios_Response=', response);
-          if(response.data.error){
-              console.error('No TempDNIS Found.')
-          }
-          else{
-            const responseData = response.data;
-            vm.callerName = responseData.callerName;
-            vm.callerPhone = responseData.callerPhone;
-            vm.callerType = responseData.callerType;
-            vm.callerNotes = responseData.notes;
-            vm.activePacient = responseData.patientName.indexOf('Sarah') > -1 ? 1 : 0;
-            vm.agentID = responseData.phantom3;
-            console.log('AGID=', vm.agentID);
+          // if(response.data.error){
+          //     console.error('No TempDNIS Found.')
+          // }
+          // else{
+            // const responseData = response.data;
+            //vm.callerName = responseData.callerName;
+            vm.callerName = 'Johns Jacobs'
+            //vm.callerPhone = responseData.callerPhone;
+            vm.callerPhone = '+1 214 701 5489';
+            //vm.callerType = responseData.callerType;
+            vm.callerType = 'Parent';
+            //vm.callerNotes = responseData.notes;
+            vm.callerNotes = 'Transferred from Agent at Contact Center in regards to Speciality Appointment';
+            //vm.activePacient = responseData.patientName.indexOf('Sarah') > -1 ? 1 : 0;
+            vm.activePacient = 1;
+            // vm.agentID = responseData.phantom3;
+            // console.log('AGID=', vm.agentID);
             vm.releaseTempDNIS(tempDNIS);
-          }
+          // }
       });
     },
     showSpaceWidget: function () {

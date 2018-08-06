@@ -41,10 +41,9 @@
                             svg.ico-svg.ico-svg__more
                                 use(xlink:href="#more")
                         .sub-popup-menu__list
-                            a(href="#3", @click.prevent="openModalInfo(index)").sub-popup-menu__item Show in EPIC
-                            a(href="#3").sub-popup-menu__item Assign
-                            a(href="#3").sub-popup-menu__item Unassign
-                            a(href="#3").sub-popup-menu__item Update
+                            a(href="#3", @click.prevent="openNewWindow('http://10.3.74.119/openemr/interface/patient_file/history/encounters.php?billing=1&issue=0&pagesize=20&pagestart=0')").sub-popup-menu__item Show in EPIC
+                            a(href="#3", @click.prevent="$root.showDetailReferral()").sub-popup-menu__item Show Details
+                            a(href="#3", @click.prevent="$root.showUpdateReferral()").sub-popup-menu__item Update
 
         modal(ref="modalInfo")
             .modal__content(v-if="currentMoreInfoIndex !== null")

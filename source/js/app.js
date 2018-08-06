@@ -46,6 +46,8 @@ import paymentConfirmation from "../components/billing/payment-confirmation.vue"
 import paymentResult from "../components/billing/payment-result.vue";
 import phoneBook from "../components/modal-component/phone-book.vue";
 import searchPatient from "../components/modal-component/search-patient.vue";
+import updateReferral from "../components/modal-component/update-referral.vue";
+import detailReferral from "../components/modal-component/detail-referral.vue";
 
 let appData = {
   activePacient: 1,
@@ -58,6 +60,8 @@ let appData = {
   userIsVerify: false,
   currentShowPhoneBook: false,
   currentShowSearchPatient: false,
+  currentShowDetailReferral: false,
+  currentShowUpdateReferral: false,
   newCallerName: '',
   callerName: 'Johns Jacobs',
   callerPhone: '+1 214 701 5489',
@@ -178,6 +182,12 @@ let App = new Vue({
     showSearchPatient: function () {
       this.currentShowSearchPatient = !this.currentShowSearchPatient
     },
+    showDetailReferral: function () {
+      this.currentShowDetailReferral = !this.currentShowDetailReferral
+    },
+    showUpdateReferral: function () {
+      this.currentShowUpdateReferral = !this.currentShowUpdateReferral
+    },
     openNewWindow(url) {
       let strWindowFeatures = "menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes";
       window.open(url, "CNN_WindowName", strWindowFeatures);
@@ -223,7 +233,9 @@ let App = new Vue({
     phoneBook,
     Multiselect,
     boardBlock,
-    searchPatient
+    searchPatient,
+    updateReferral,
+    detailReferral,
   },
   watch: {
     currentShowBox: function () {

@@ -285,7 +285,14 @@ block content
 
                     //-show Referrals
                     .content(v-if="$root.currentShowBox ==='referrals' && !currentShowSubBox", key="referrals")
-                        
+                        transition(name="fade", mode='out-in')
+                            .content
+                                .content__box
+                                    detail-referral(:show="$root.currentShowDetailReferral")
+                        transition(name="fade", mode='out-in')
+                            .content
+                                .content__box
+                                    update-referral(:show="$root.currentShowUpdateReferral")
                         .content__top-line
                             h1.title Caller Information
                         div().ccase-managment

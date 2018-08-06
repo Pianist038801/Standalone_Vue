@@ -294,6 +294,20 @@
                 <div class="content__box"></div>
               </div>
               <div class="content" v-if="$root.currentShowBox ==='referrals' &amp;&amp; !currentShowSubBox" key="referrals">
+                <transition name="fade" mode="out-in">
+                  <div class="content">
+                    <div class="content__box">
+                      <detail-referral :show="$root.currentShowDetailReferral"></detail-referral>
+                    </div>
+                  </div>
+                </transition>
+                <transition name="fade" mode="out-in">
+                  <div class="content">
+                    <div class="content__box">
+                      <update-referral :show="$root.currentShowUpdateReferral"></update-referral>
+                    </div>
+                  </div>
+                </transition>
                 <div class="content__top-line">
                   <h1 class="title">Caller Information</h1>
                 </div>

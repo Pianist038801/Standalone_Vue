@@ -338,7 +338,7 @@ block content
                                 svg.ico-svg.ico-svg__plus-round
                                     use(xlink:href="#plus-round")
                         .content__box
-                            referral(:patients="$root._data.Patients[$root.activePacient]")
+                            referral(:referrals="$root._data.Referrals")
                             journey-map(:info="$root._data.Patients[$root.activePacient]")
 
                     //-show patient-information

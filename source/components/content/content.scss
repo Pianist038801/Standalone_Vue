@@ -16,6 +16,11 @@
   padding: 10px;
 }
 
+.reasonvalue {
+  padding: 10px;
+  width: 100%;
+}
+
 .ccase-managment__top {
   lost-flex-container: row;
 }
@@ -50,7 +55,14 @@ li {
   lost-column: 1/4 4 em(80px);
   margin-bottom: em(30);
 }
-
+.referral__detail-field-reason {
+  lost-column: 3/4 4 em(80px);
+  margin-bottom: em(30);
+}
+.referral__detail-field-notes {
+  lost-column: 2/4 4 em(80px);
+  margin-bottom: em(30);
+}
 .ccase-managment__top-item {
   lost-column: 1/3 3 em(80px);
   margin-bottom: em(30);

@@ -33,6 +33,72 @@
       "Notes": ""
     }
   ],
+  "Referrals": [
+    {
+      "refID": "9145142519",
+      "patientID": "331325525",
+      "patientName": "Jack David",
+      "referredBy": "Kevin",
+      "referredTo": "Ted",
+      "referralType": "Direct",
+      "referredStatus": "Authorized",
+      "businessSegment": "Business1",
+      "serviceArea" : "Dallas",
+      "startDate": "2018/03/02",
+      "endDate": "2018/06/05",
+
+      "refID_External": "222222222",
+      "patientAddress": "Pensylvynia, USA",
+      "diagnoses": "Fever, Pain",
+      "procedures": "Medicine3, Medicine4",
+      "referredToAddress": "Chicago",
+      "referredToFacility": "Hospital B",
+
+      "reason": "Reason1",
+      "scheduleDate": "",
+      "scheduleStatus": "Pending",
+      "deptID": "",
+      "deptType": "",
+      "locationID": "",
+      "locationType": "",
+      "assignAppointment": false,
+      "appointment": "",
+      "notes": "Notes1",
+      "comments": "Comments1"
+    },
+    {
+      "refID": "29145142519",
+      "patientID": "2221325525",
+      "patientName": "Jack David2",
+      "referredBy": "2Kevin",
+      "referredTo": "3Ted",
+      "referralType": "Direct",
+      "referredStatus": "Pending",
+      "businessSegment": "Business1",
+      "serviceArea" : "Dallas",
+      "startDate": "2018/03/02",
+      "endDate": "2018/06/05",
+
+      "refID_External": "51523525325",
+      "patientAddress": "Dallas, USA",
+      "diagnoses": "Cold, Pain",
+      "procedures": "Medicine1, Medicine2",
+      "referredToAddress": "Bay Area",
+      "referredToFacility": "Hospital A",
+
+      "reason": "Reason2",
+      "scheduleDate": "",
+      "scheduleStatus": "Pending",
+      "deptID": "",
+      "deptType": "",
+      "locationID": "",
+      "locationType": "",
+      "assignAppointment": true,
+      "appointment": "",
+      "notes": "Notes2",
+      "comments": "Comments2"
+    }
+  ],
   "Patients": [{
     "screenPopLinkInfo": "http://10.3.74.119/openemr/interface/patient_file/summary/demographics.php?set_pid=1",
     "Category": "EPIC",

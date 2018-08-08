@@ -3,7 +3,7 @@
         .modal__content
             .modal__content-row
                 .modal-appointment__title
-                    .title.mod--modal-appointment Patient Referral Details 
+                    .title.mod--modal-appointment Update Patient Referral Details 
                     .referral-view__top
                         .referral__detail-field
                             span().infoname STATUS    
@@ -14,9 +14,9 @@
                                 :allowEmpty="false",
                                 :showLabels="false"
                             ).ui-multiselect.ui-multiselect--default.inline-block
-                        .referral__detail-field
+                        .referral__detail-field-reason
                             span().infoname Reason
-                            input(v-model="reason").infovalue
+                            input(v-model="reason").reasonvalue
                          
 
                     .referral-view__top
@@ -28,10 +28,16 @@
                             input(v-model="expirationDate").infovalue
                         .referral__detail-field
                             span().infoname Schedule By Date
-                            input(v-model="scheduleDate").infovalue
+                            input(v-model="scheduleDate", required).infovalue
                         .referral__detail-field
                             span().infoname Scheduling Status
-                            input(v-model="scheduleStatus").infovalue
+                            multiselect(
+                                :options="['Denied', 'Pending', 'Closed', 'Authorized']",
+                                :searchable="false",
+                                v-model="scheduleStatus",
+                                :allowEmpty="false",
+                                :showLabels="false"
+                            ).ui-multiselect.ui-multiselect--default.inline-block
 
                     .referral-view__top
                         .referral__detail-field
@@ -57,30 +63,30 @@
                         .referral__detail-field
                             span().infoname Assign Referral to Appointment
                             
-                            input(type="checkbox" ).infovalue
+                            input(type="radio", name='assigns', v-model="assign", value='true', checked="true",  @click.prevent="assign=true" ).infovalue
                             multiselect(
-                                :options="['Denied', 'Pending', 'Closed', 'Authorized']",
+                                :options="assign==true?appointments:[]",
                                 :searchable="false",
-                                v-model="status",
+                                v-model="appointment",
                                 :allowEmpty="false",
                                 :showLabels="false"
                             ).ui-multiselect.ui-multiselect--default.inline-block
                         .referral__detail-field
                             span().infoname Unassign Referral to Appointment
-                            input(type="checkbox" ).infovalue
-
+                            input(type="radio", name='assigns', v-model="assign", value='false', @click.prevent="assign=false").infovalue
+ 
                     .referral-view__top
-                        .referral__detail-field
+                        .referral__detail-field-notes
                             span().infoname Notes
-                            textarea(v-model="notes").infovalue
-                        .referral__detail-field 
+                            textarea(v-model="notes").reasonvalue
+                        .referral__detail-field-notes 
                             span().infoname Comments
-                            textarea(v-model="comments").infovalue
+                            textarea(v-model="comments").reasonvalue
                                  
             
             .modal-appointment__row
                     a(href="#3", @click="onClose").ui-btn.ui-btn--skin-default.ui-btn--theme-primary-border Close
-                    a(href="#3", @click="onClose").ui-btn.ui-btn--skin-default.ui-btn--theme-primary-border Update
+                    a(href="#3", @click="onUpdate").ui-btn.ui-btn--skin-default.ui-btn--theme-primary-border Update
 
 </template>
 <script>
@@ -99,6 +105,25 @@
         },
         methods: {
             onClose(){
+                this.$refs.modalphone.close()
+            },
+            onUpdate(){
+                this.$root._data.Referrals[this.$root._data.referralIndex].referredStatus = this.status
+                this.$root._data.Referrals[this.$root._data.referralIndex].reason = this.reason
+                this.$root._data.Referrals[this.$root._data.referralIndex].startDate = this.startDate
+                this.$root._data.Referrals[this.$root._data.referralIndex].endDate = this.expirationDate
+                this.$root._data.Referrals[this.$root._data.referralIndex].scheduleDate = this.scheduleDate
+                this.$root._data.Referrals[this.$root._data.referralIndex].scheduleStatus = this.scheduleStatus
+                this.$root._data.Referrals[this.$root._data.referralIndex].deptID = this.deptID
+                this.$root._data.Referrals[this.$root._data.referralIndex].deptType = this.deptType
+                this.$root._data.Referrals[this.$root._data.referralIndex].locationID = this.locationID
+                this.$root._data.Referrals[this.$root._data.referralIndex].locationType = this.locationType
+                this.$root._data.Referrals[this.$root._data.referralIndex].referredBy = this.providerID
+                this.$root._data.Referrals[this.$root._data.referralIndex].referralType = this.providerType
+                this.$root._data.Referrals[this.$root._data.referralIndex].assignAppointment = this.assign    
+                this.$root._data.Referrals[this.$root._data.referralIndex].appointment = this.appointment
+                this.$root._data.Referrals[this.$root._data.referralIndex].notes = this.notes
+                this.$root._data.Referrals[this.$root._data.referralIndex].comments = this.comments
                 this.$refs.modalphone.close()
             },
             ifShow(patient){
@@ -122,55 +147,31 @@
                     case 'Patient SSN':
                         return patient.SSN.indexOf(this.searchKey)>-1 ? true : false
                 }
-            },
-            showType(){
-                console.log(searchType);
-            },
-            submit(){
-                
-                console.log('UHAHA');
-                console.log(this.$root._data.Patients[this.$root.activePacient])
-                const vm = this;
-                const results = {
-                    destinationNo : this.phoneNumber.substring(this.phoneNumber.length - 13, this.phoneNumber.length - 1),
-                    destinationName : this.phoneNumber.substring(0, this.phoneNumber.length - 14),
-                    patientName : this.$root._data.Patients[this.$root.activePacient].Name,
-                    patientMRN : this.$root._data.Patients[this.$root.activePacient].MRN,
-                    callerName : this.$root._data.callerInfo.callerName,
-                    callerPhone : this.$root._data.callerInfo.callerNo,
-                    callerType : this.$root._data.callerInfo.callerType,
-                    notes : this.phoneNote,
-                    transferredFrom: 'Urology Dept',
-                    hospital: 'Agenta Health - Urology Department',
-                    phantom1 : 'Urology Dept',
-                    phantom2 : 'Agenta Health - Urology Department',
-                    phantom3 : ""
-                }
-                console.log(results)
-            },
-            clickRow(item){
-                console.log(item)
-                this.chosen = item
-            },  
+            }, 
         },        
         data() {
+            console.log('Update_DLG_OPEN');
+            const referral = this.$root._data.Referrals[this.$root._data.referralIndex];
+            const appointments = this.$root._data.ExistingAppointmentSlots.map(val => val.StartTime)
             return {
-                status: '',
-                reason: 'Reason',
-                startDate: '',
-                expirationDate: '',
-                scheduleDate: '',
-                scheduleStatus: '',
-                deptID: '',
-                deptType: '',
-                locationID: '',
-                locationType: '',
-                providerID: '',
-                providerType: '',
-                checkAppointment: true,
-                assignedAppointment: '',
-                notes: '',
-                comments: '',
+                appointments,
+                status: referral.referredStatus,
+                reason: referral.reason,
+                startDate: referral.startDate,
+                expirationDate: referral.endDate,
+                scheduleDate: referral.scheduleDate,
+                scheduleStatus: referral.scheduleStatus,
+                deptID: referral.deptID,
+                deptType: referral.deptType,
+                locationID: referral.locationID,
+                locationType: referral.locationType,
+                providerID: referral.referredBy,
+                providerType: referral.referralType,
+                checkAppointment: referral.assignAppointment,
+                assign: referral.assignAppointment,
+                appointment: referral.appointment,
+                notes: referral.notes,
+                comments: referral.comments,
             }
         },
          
@@ -180,7 +181,28 @@
 
         watch: {
             show: function (val) {
+                console.log('showUpdate');
                 this.$refs.modalphone.open();
+                const referral = this.$root._data.Referrals[this.$root._data.referralIndex];
+                this.reason = referral.reason
+                this.status= referral.referredStatus,
+                this.reason= referral.reason,
+                this.startDate= referral.startDate,
+                this.expirationDate= referral.endDate,
+                this.scheduleDate= referral.scheduleDate,
+                this.scheduleStatus= referral.scheduleStatus,
+                this.deptID= referral.deptID,
+                this.deptType= referral.deptType,
+                this.locationID= referral.locationID,
+                this.locationType= referral.locationType,
+                this.providerID= referral.referredBy,
+                this.providerType= referral.referralType,
+                this.checkAppointment= referral.assignAppointment,
+                this.assign= referral.assignAppointment,
+                this.appointment= referral.appointment,
+                this.notes= referral.notes,
+                this.comments= referral.comments
+                 
             }
         },
         mounted() {

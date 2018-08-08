@@ -7,55 +7,55 @@
                     .referral-view__top
                         .referral__detail-field
                             span().infoname Referral Id    
-                            input(:value="$root._data.callerPhone" readonly).infovalue
+                            input(:value="this.$root._data.Referrals[this.$root._data.referralIndex].refID" readonly).infovalue
                         .referral__detail-field
                             span().infoname External Referral ID
-                            input(:value="$root._data.callerPhone" readonly).infovalue
+                            input(:value="this.$root._data.Referrals[this.$root._data.referralIndex].refID_External" readonly).infovalue
                         .referral__detail-field
                             span().infoname Referral Auth Start Date
-                            input(:value="$root._data.callerPhone" readonly).infovalue
+                            input(:value="this.$root._data.Referrals[this.$root._data.referralIndex].startDate" readonly).infovalue
                         .referral__detail-field
                             span().infoname Referral Auth End Date
-                            input(:value="$root._data.callerPhone" readonly).infovalue
+                            input(:value="this.$root._data.Referrals[this.$root._data.referralIndex].endDate" readonly).infovalue
 
                     .referral-view__top
                         .referral__detail-field
                             span().infoname Patient Id    
-                            input(:value="$root._data.callerPhone" readonly).infovalue
+                            input(:value="this.$root._data.Referrals[this.$root._data.referralIndex].patientID" readonly).infovalue
                         .referral__detail-field
                             span().infoname Patient Name
-                            input(:value="$root._data.callerPhone" readonly).infovalue
+                            input(:value="this.$root._data.Referrals[this.$root._data.referralIndex].patientName" readonly).infovalue
                         .referral__detail-field
                             span().infoname Patient Address
-                            input(:value="$root._data.callerPhone" readonly).infovalue
+                            input(:value="this.$root._data.Referrals[this.$root._data.referralIndex].patientAddress" readonly).infovalue
 
                     .referral-view__top
                         .referral__detail-field
                             span().infoname Referral Type
-                            input(:value="$root._data.callerPhone" readonly).infovalue
+                            input(:value="this.$root._data.Referrals[this.$root._data.referralIndex].referralType" readonly).infovalue
                         .referral__detail-field
                             span().infoname Referral Status
-                            input(:value="$root._data.callerPhone" readonly).infovalue
+                            input(:value="this.$root._data.Referrals[this.$root._data.referralIndex].referredStatus" readonly).infovalue
                         .referral__detail-field
                             span().infoname Diagnoses
-                            input(:value="$root._data.callerPhone" readonly).infovalue
+                            input(:value="this.$root._data.Referrals[this.$root._data.referralIndex].diagnoses" readonly).infovalue
                         .referral__detail-field
                             span().infoname procedures
-                            input(:value="$root._data.callerPhone" readonly).infovalue
+                            input(:value="this.$root._data.Referrals[this.$root._data.referralIndex].procedures" readonly).infovalue
 
                     .referral-view__top
                         .referral__detail-field
                             span().infoname Referred by provider name
-                            input(:value="$root._data.callerPhone" readonly).infovalue
+                            input(:value="this.$root._data.Referrals[this.$root._data.referralIndex].referredBy" readonly).infovalue
                         .referral__detail-field
                             span().infoname Referred to provider name
-                            input(:value="$root._data.callerPhone" readonly).infovalue
+                            input(:value="this.$root._data.Referrals[this.$root._data.referralIndex].referredTo" readonly).infovalue
                         .referral__detail-field
                             span().infoname Referred to provider address
-                            input(:value="$root._data.callerPhone" readonly).infovalue
+                            input(:value="this.$root._data.Referrals[this.$root._data.referralIndex].referredToAddress" readonly).infovalue
                         .referral__detail-field
                             span().infoname Referred to facility address
-                            input(:value="$root._data.callerPhone" readonly).infovalue
+                            input(:value="this.$root._data.Referrals[this.$root._data.referralIndex].referredToFacility" readonly).infovalue
                                  
             .modal-appointment__row
                     a(href="#3", @click="onClose").ui-btn.ui-btn--skin-default.ui-btn--theme-primary-border Ok
@@ -150,13 +150,7 @@
         },        
         data() {
             return {
-                phoneNumber: '',
-                searchType: '',
-                phoneNote: '',
-                searchKey: '',
-                searchTemp: '',
-                showRecent: true,
-                chosen: null,
+                referral: this.$root._data.Referrals[this.$root._data.referralIndex]
             }
         },
          

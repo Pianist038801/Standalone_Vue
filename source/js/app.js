@@ -74,6 +74,7 @@ let appData = {
   dropdownCallerName: 'Johns Jacobs',
   dropdownCallerType: 'Parent',
   agentID: '',
+  referralIndex: 0,
 };
  
 
@@ -182,10 +183,12 @@ let App = new Vue({
     showSearchPatient: function () {
       this.currentShowSearchPatient = !this.currentShowSearchPatient
     },
-    showDetailReferral: function () {
+    showDetailReferral: function (index) {
+      this.referralIndex = index;
       this.currentShowDetailReferral = !this.currentShowDetailReferral
     },
-    showUpdateReferral: function () {
+    showUpdateReferral: function (index) {
+      this.referralIndex = index;
       this.currentShowUpdateReferral = !this.currentShowUpdateReferral
     },
     openNewWindow(url) {
@@ -281,6 +284,7 @@ Vue.http.get(urlData)
           if(item.Category=='EPIC')
               array.push(item.Name);
       });
+      
       array.push('add New')
       data.patientNames = array.slice(0);
       //

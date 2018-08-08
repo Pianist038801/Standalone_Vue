@@ -5,6 +5,11 @@
                 svg.ico-svg.ico-svg__filter-results-button
                     use(xlink:href="#filter-results-button")
                 span All referrals
+            input(v-model="business_segment", placeholder='Business Segment')
+            input(v-model="service_area", placeholder='Service Area')
+            input(v-model="status", placeholder='Status')
+            input(v-model="startDate", placeholder='Start Date')
+            input(v-model="endDate", placeholder='End Date')
             .appointment__top-data
                 svg.ico-svg.ico-svg__calendar
                     use(xlink:href="#calendar")
@@ -12,29 +17,29 @@
         table.appointment__table
             tr
                 th Ref ID
-                th Auth start date
-                th Auth end date
-                th Patient Name
                 th Patient ID
-                th Procedures
-                th Referred By
-                th Referred To(Dept)
-                th Referred To(Facility Add)
-                th Referred To(Provider Name, Add)
-                th Facility Name
+                th Patient Name
+                th Referred By (Provider)
+                th Referred To (Provider)
+                th Referral Type
+                th Referred Status
+                th Business Segment
+                th Service Area
+                th Referral Auth Start Date
+                th Referral Auth End Date
                 th Actions
-            tr(v-for="(item, index) in patients.PastAppointments")
-                td Ref ID
-                td Auth start date
-                td Auth end date
-                td Patient Name
-                td Patient ID
-                td Procedures
-                td Referred By
-                td Referred To(Dept)
-                td Referred To(Facility Add)
-                td Referred To(Provider Name, Add)
-                td Facility Name
+            tr(v-for="(item, index) in this.$store.state.referrals", v-if="check(item)")
+                td {{item.refID}}
+                td {{item.patientID}}
+                td {{item.patientName}}
+                td {{item.referredBy}}
+                td {{item.referredTo}}
+                td {{item.referralType}}
+                td {{item.referredStatus}}
+                td {{item.businessSegment}}
+                td {{item.serviceArea}}
+                td {{item.startDate}}
+                td {{item.endDate}}
                 td.more-action
                     .sub-popup-menu
                         .sub-popup-menu__action
@@ -42,8 +47,8 @@
                                 use(xlink:href="#more")
                         .sub-popup-menu__list
                             a(href="#3", @click.prevent="openNewWindow('http://10.3.74.119/openemr/interface/patient_file/history/encounters.php?billing=1&issue=0&pagesize=20&pagestart=0')").sub-popup-menu__item Show in EPIC
-                            a(href="#3", @click.prevent="$root.showDetailReferral()").sub-popup-menu__item Show Details
-                            a(href="#3", @click.prevent="$root.showUpdateReferral()").sub-popup-menu__item Update
+                            a(href="#3", @click.prevent="$root.showDetailReferral(index)").sub-popup-menu__item Show Details
+                            a(href="#3", @click.prevent="$root.showUpdateReferral(index)").sub-popup-menu__item Update
 
         modal(ref="modalInfo")
             .modal__content(v-if="currentMoreInfoIndex !== null")
@@ -100,14 +105,19 @@
     import modal from "../modal-component/modal.vue";
 
     export default {
-        props: ['patients'],
+        props: ['referrals'],
         components: {
             modal
         },
         data() {
             return {
                 visible: false,
-                currentMoreInfoIndex: null
+                currentMoreInfoIndex: null,
+                business_segment: '',
+                service_area: '',
+                status: '',
+                startDate: '',
+                endDate: '',
             }
         },
         methods: {
@@ -118,13 +128,22 @@
                 window.open(url, "CNN_WindowName", strWindowFeatures);
 
             },
-
+            check(item){
+                if(this.business_segment!='' && item.businessSegment.indexOf(this.business_segment) < 0) return false;
+                if(this.service_area!='' && item.serviceArea.indexOf(this.service_area) < 0) return false;
+                if(this.status!='' && item.referredStatus.indexOf(this.status) < 0) return false;    
+                if(this.startDate!='' && item.startDate.indexOf(this.startDate) < 0) return false;
+                if(this.endDate!='' && item.endDate.indexOf(this.endDate) < 0) return false;
+                return true;
+            },
             openModalInfo(index){
                 this.currentMoreInfoIndex = index;
                 this.$refs.modalInfo.open();
             }
         },
-        mounted() {},
+        mounted() {
+            this.$store.dispatch('setReferral', this.$root._data.Referrals);
+        },
         beforeDestroy() {},
     }
 </script>

@@ -62,8 +62,8 @@
                             input(v-model="providerID").infovalue
                         .referral__detail-field
                             span().infoname Assign Referral to Appointment
-                            
-                            input(type="radio", name='assigns', v-model="assign", value='true', checked="true",  @click.prevent="assign=true" ).infovalue
+                             
+                            input(type="checkbox", v-model="assign", @click.prevent="assign=true" ).infovalue
                             multiselect(
                                 :options="assign==true?appointments:[]",
                                 :searchable="false",
@@ -73,8 +73,8 @@
                             ).ui-multiselect.ui-multiselect--default.inline-block
                         .referral__detail-field
                             span().infoname Unassign Referral to Appointment
-                            input(type="radio", name='assigns', v-model="assign", value='false', @click.prevent="assign=false").infovalue
- 
+                            input(type="checkbox", v-model="un_assign", @click.prevent="assign=false" ).infovalue
+
                     .referral-view__top
                         .referral__detail-field-notes
                             span().infoname Notes
@@ -152,7 +152,7 @@
         data() {
             console.log('Update_DLG_OPEN');
             const referral = this.$root._data.Referrals[this.$root._data.referralIndex];
-            const appointments = this.$root._data.ExistingAppointmentSlots.map(val => val.StartTime)
+            const appointments = this.$root._data.referralAppointments.map(val => val.StartTime)
             return {
                 appointments,
                 status: referral.referredStatus,
@@ -169,6 +169,7 @@
                 providerType: referral.referralType,
                 checkAppointment: referral.assignAppointment,
                 assign: referral.assignAppointment,
+                un_assign: !referral.assignAppointment,
                 appointment: referral.appointment,
                 notes: referral.notes,
                 comments: referral.comments,
@@ -180,6 +181,9 @@
         },
 
         watch: {
+            assign: function(val) {
+                this.un_assign = !val;
+            },
             show: function (val) {
                 console.log('showUpdate');
                 this.$refs.modalphone.open();
@@ -209,9 +213,6 @@
             console.log('PHONE_MOUNTED');
             let vm = this;
             vm.phoneNumber='';
-        },
-        computed:{
-            //console.log('React Bootstrapy', let 'v', custom 'cus')
         },
         beforeDestroy() {
         },

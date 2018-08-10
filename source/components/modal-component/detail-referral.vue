@@ -25,9 +25,9 @@
                         .referral__detail-field
                             span().infoname Patient Name
                             input(:value="this.$root._data.Referrals[this.$root._data.referralIndex].patientName" readonly).infovalue
-                        .referral__detail-field
-                            span().infoname Patient Address
-                            input(:value="this.$root._data.Referrals[this.$root._data.referralIndex].patientAddress" readonly).infovalue
+                        .referral__detail-field-patient-address
+                            span().infoname_address Patient Address
+                            input(:value="this.$root._data.Referrals[this.$root._data.referralIndex].patientAddress" readonly).infovalue-patient-address
 
                     .referral-view__top
                         .referral__detail-field

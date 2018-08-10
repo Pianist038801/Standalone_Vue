@@ -157,7 +157,7 @@
             {
                 var d = new Date();
                 var day = d.getDay(),
-                    diff = d.getDate() - day + (day == 0 ? -6:1) + 6; // adjust when day is sunday
+                    diff = d.getDate() - day + (day == 0 ? -6:1) + 5; // adjust when day is sunday
                 const _saturday =  new Date(d.setDate(diff));
                 return _saturday.getDate() + '/' + (_saturday.getMonth() + 1) + '/' + _saturday.getFullYear()
             }

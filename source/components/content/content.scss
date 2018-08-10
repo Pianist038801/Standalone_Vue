@@ -10,10 +10,15 @@
 .infoname {
   color: grey;
   margin-right: 20px;
-}
-
+} 
 .infovalue { 
   padding: 10px;
+}
+
+.infovalue-patient-address
+{
+  width: 428px;
+  height: 42px;
 }
 
 .reasonvalue {
@@ -51,14 +56,21 @@ li {
   lost-flex-container: row;
 }
 
+.referral__detail-field-patient-address {
+  lost-column: 1/4 4 em(80px);
+  margin-bottom: em(30);
+}
+
 .referral__detail-field {
   lost-column: 1/4 4 em(80px);
   margin-bottom: em(30);
 }
+
 .referral__detail-field-reason {
   lost-column: 3/4 4 em(80px);
   margin-bottom: em(30);
 }
+
 .referral__detail-field-notes {
   lost-column: 2/4 4 em(80px);
   margin-bottom: em(30);

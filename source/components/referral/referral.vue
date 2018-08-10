@@ -13,7 +13,9 @@
             .appointment__top-data
                 svg.ico-svg.ico-svg__calendar
                     use(xlink:href="#calendar")
-                span {{["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][new Date().getMonth()]}} {{new Date().getDate()}}, {{new Date().getFullYear()}}
+                // span {{["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][new Date().getMonth()]}} {{new Date().getDate()}}, {{new Date().getFullYear()}}
+                // span {{new Date().getDate()}}/{{ new Date().getMonth() + 1 }}/{{new Date().getFullYear()}}
+                span {{sunday}} - {{saturday}}
         table.appointment__table
             tr
                 th Ref ID
@@ -140,6 +142,26 @@
                 this.currentMoreInfoIndex = index;
                 this.$refs.modalInfo.open();
             }
+        },
+        computed: {
+            sunday: function()
+            {
+                var d = new Date();
+                var day = d.getDay(),
+                    diff = d.getDate() - day + (day == 0 ? -6:1) - 1; // adjust when day is sunday
+                    //{{new Date().getDate()}}/{{ new Date().getMonth() + 1 }}/{{new Date().getFullYear()}}
+                const _sunday =  new Date(d.setDate(diff));
+                return _sunday.getDate() + '/' + (_sunday.getMonth() + 1) + '/' + _sunday.getFullYear()
+            },
+            saturday: function()
+            {
+                var d = new Date();
+                var day = d.getDay(),
+                    diff = d.getDate() - day + (day == 0 ? -6:1) + 6; // adjust when day is sunday
+                const _saturday =  new Date(d.setDate(diff));
+                return _saturday.getDate() + '/' + (_saturday.getMonth() + 1) + '/' + _saturday.getFullYear()
+            }
+            
         },
         mounted() {
             this.$store.dispatch('setReferral', this.$root._data.Referrals);

@@ -69,22 +69,22 @@ block content
                         
                             .ccase-managment__top_boxes
                                 .ccase-managment__top-rect.inline-block
-                                    board-block(:count='$root.activePacient==0?2:1', :text="'Past Appointments'", :col="'rgb(255,0,0)'")
+                                    board-block(:count='$root.activePacient==0?1:1', :text="'Past Appointments'", :col="'rgb(255,0,0)'")
                                 .ccase-managment__top-rect.inline-block
-                                    board-block(:count='$root.activePacient==0?3:8', :text="'Current Appointments'", :col="'green'")
+                                    board-block(:count='$root.activePacient==0?3:2', :text="'Current Appointments'", :col="'green'")
                                 .ccase-managment__top-rect.inline-block
-                                    board-block(:count='$root.activePacient==0?2:7', :text="'Future Appointments'", :col="'grey'")
+                                    board-block(:count='$root.activePacient==0?1:1', :text="'Future Appointments'", :col="'grey'")
                                 .ccase-managment__top-rect.inline-block
-                                    board-block(:count='$root.activePacient==0?4:6', :text="'Cancelled/No Shows'", :col="'pink'")
+                                    board-block(:count='$root.activePacient==0?2:3', :text="'Cancelled/No Shows'", :col="'pink'")
                             .ccase-managment__top_boxes
                                 .ccase-managment__top-rect.inline-block
-                                    board-block(:count='$root.activePacient==0?3:5', :text="'Bills'", :col="'grey'")
+                                    board-block(:count='$root.activePacient==0?3:3', :text="'Bills'", :col="'grey'")
                                 .ccase-managment__top-rect.inline-block
-                                    board-block(:count='$root.activePacient==0?5:4', :text="'Referrals'", :col="'pink'")
+                                    board-block(:count='$root.activePacient==0?2:2', :text="'Referrals'", :col="'pink'")
                                 .ccase-managment__top-rect.inline-block
-                                    board-block(:count='$root.activePacient==0?7:1', :text="'Outreach'", :col="'rgb(255,0,0)'")
+                                    board-block(:count='$root.activePacient==0?3:2', :text="'Outreach'", :col="'rgb(255,0,0)'")
                                 .ccase-managment__top-rect.inline-block
-                                    board-block(:count='$root.activePacient==0?6:2', :text="'Grace Paz'", :col="'green'")
+                                    board-block(:count='$root.activePacient==0?2:4', :text="'Inbound'", :col="'green'")
                         .content__box
                             journey-map(:info="$root._data.Patients[$root.activePacient]")
                     
@@ -118,6 +118,7 @@ block content
                                     multiselect(
                                         :options="['Patient', 'Parent', 'Family', 'Agent', 'Nurse', 'Physician']",
                                         :searchable="false",
+v-model="$root._data.dropdownCallerType",
                                         :allowEmpty="false",
                                         :showLabels="false"
                                     ).ui-multiselect.ui-multiselect--default.inline-block
@@ -167,6 +168,7 @@ block content
                                     multiselect(
                                         :options="['Patient', 'Parent', 'Family', 'Agent', 'Nurse', 'Physician']",
                                         :searchable="false",
+v-model="$root._data.dropdownCallerType",
                                         :allowEmpty="false",
                                         :showLabels="false"
                                     ).ui-multiselect.ui-multiselect--default.inline-block
@@ -214,6 +216,7 @@ block content
                                     multiselect(
                                         :options="['Patient', 'Parent', 'Family', 'Agent', 'Nurse', 'Physician']",
                                         :searchable="false",
+v-model="$root._data.dropdownCallerType",
                                         :allowEmpty="false",
                                         :showLabels="false"
                                     ).ui-multiselect.ui-multiselect--default.inline-block
@@ -320,6 +323,7 @@ block content
                                     multiselect(
                                         :options="['Patient', 'Parent', 'Family', 'Agent', 'Nurse', 'Physician']",
                                         :searchable="false",
+v-model="$root._data.dropdownCallerType",
                                         :allowEmpty="false",
                                         :showLabels="false"
                                     ).ui-multiselect.ui-multiselect--default.inline-block

@@ -123,8 +123,8 @@
       "Phone": "+1 208 975 3874"
     },
     "Address": {
-      "Line1": "3453 T Ave",
-      "Line2": "Fort Worth, TX 76179, USA"
+      "Line1": "3453 T Ave, Fort Worth",
+      "Line2": "TX 76179, USA"
     },
     "TreatmentTeam": [
     ],
@@ -257,7 +257,23 @@
     },
     "PastAppointments": [
       {
-        "Date": "5-27-2018 15:00:00",
+        "Date": "7-01-2018 15:00:00",
+        "Time": "12:00:00",
+        "Department": "SpinSci Clinic",
+        "Provider": "Administrator",
+        "VisitType": "Office Visit",
+        "VisitReason": "New Patient",
+        "Appointment Details": {
+          "Interpreter Required": "No",
+          "IsRequired": "false",
+          "Interpreter Language": "None",
+          "Status": "Arrived Late"
+        }
+      }
+    ],
+    "CurrentAppointments": [
+      {
+        "Date": "8-20-2018 15:00:00",
         "Time": "15:00:00",
         "Department": "Radiology",
         "Provider": "Dr. Steve Angler",
@@ -271,10 +287,10 @@
         }
       },
       {
-        "Date": "9-25-2018 14:30:00",
+        "Date": "8-25-2018 14:30:00",
         "Time": "13:00:00",
         "Department": "General",
-        "Provider": "Dr. Steve Angler",
+        "Provider": "Dr. John Lee",
         "VisitType": "Office Visit",
         "VisitReason": "Knee Pain",
         "Appointment Details": {
@@ -285,10 +301,24 @@
         }
       },
       {
-        "Date": "10-13-2018 14:00:00",
+        "Date": "9-01-2018 14:00:00",
         "Time": "11:00:00",
         "Department": "Kent Health Center",
         "Provider": "Dr. Mary John",
+        "VisitType": "Physical",
+        "VisitReason": "No Comments",
+        "Appointment Details": {
+          "Interpreter Required": "No",
+          "IsRequired": "True",
+          "Interpreter Language": "None",
+          "Status": "Checked Out"
+        }
+      },
+      {
+        "Date": "10-01-2018 14:00:00",
+        "Time": "11:00:00",
+        "Department": "Kent Health Center",
+        "Provider": "Dr. John Lee",
         "VisitType": "Physical",
         "VisitReason": "No Comments",
         "Appointment Details": {
@@ -671,13 +701,13 @@
         "IssueDate": "20-Aug-2016 00:00:00"
       },
       "Vitals": {
-        "Height": 110,
+        "Height": 133,
         "Weight": 30,
-        "RespirationRate": 53,
-        "BMI": 18.9,
-        "Pulse": 175,
-        "BloodPressureLo": 130,
-        "BloodPressureHi": 148
+        "RespirationRate": 29,
+        "BMI": 17.2,
+        "Pulse": 84,
+        "BloodPressureLo": 70,
+        "BloodPressureHi": 100  
       },
       "Physician": {
         "Name": "Mark Williams, MD",
@@ -687,11 +717,11 @@
         "EmergencyPhone": "+1 800 111 2222"
       },
       "Status": {
-        "Email": "salsa.dancer.87@aol.com",
+        "Email": "grace.paz.531@aol.com",
         "Race": "Declined to Specify",
         "Ethnicity": "Declined to Specify",
         "Religion": "Cyberculture Religions",
-        "MaritalStatus": "Married",
+        "MaritalStatus": "Single",
         "EmergencyContact": {
           "Relation": "Friend",
           "Name": "Mr Nobody",
@@ -828,7 +858,23 @@
       },
       "PastAppointments": [
         {
-          "Date": "9-20-2015 15:00:00",
+          "Date": "7-23-2018 15:00:00",
+          "Time": "12:00:00",
+          "Department": "SpinSci Clinic",
+          "Provider": "Administrator",
+          "VisitType": "Office Visit",
+          "VisitReason": "New Patient",
+          "Appointment Details": {
+            "Interpreter Required": "No",
+            "IsRequired": "false",
+            "Interpreter Language": "None",
+            "Status": "Arrived Late"
+          }
+        }
+      ],
+      "CurrentAppointments": [
+        {
+          "Date": "8-23-2018 15:00:00",
           "Time": "12:00:00",
           "Department": "SpinSci Clinic",
           "Provider": "Administrator",
@@ -842,7 +888,7 @@
           }
         },
         {
-          "Date": "8-25-2017 14:30:00",
+          "Date": "8-28-2018 14:30:00",
           "Time": "15:00:00",
           "Department": "SpinSci Clinic",
           "Provider": "Administrator",
@@ -853,6 +899,20 @@
             "IsRequired": "True",
             "Interpreter Language": "Mandarin",
             "Status": "Checked Out"
+          }
+        },
+        {
+          "Date": "9-30-2018 15:00:00",
+          "Time": "12:00:00",
+          "Department": "SpinSci Clinic",
+          "Provider": "Administrator",
+          "VisitType": "Office Visit",
+          "VisitReason": "New Patient",
+          "Appointment Details": {
+            "Interpreter Required": "No",
+            "IsRequired": "false",
+            "Interpreter Language": "None",
+            "Status": "Arrived Late"
           }
         }
       ]

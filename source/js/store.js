@@ -20,15 +20,20 @@ export default new Vuex.Store({
        state.paciendId = id
        if(id==0)
         state.pacientName = 'Johns Jacobs'
-       else
+       if(id==1)
+        state.pacientName = 'Sarah Jones'
+       if(id==2)
         state.pacientName = 'Grace Paz'
+       
     },
     setPacientName (state, name) {
       state.pacientName = name
       if(name=='Johns Jacobs')
         state.pacientId = 0;
-      else
+      if(name=='Sarah Jones')
         state.pacientId = 1;
+      if(name=='Grace Paz')
+        state.pacientId = 2;
     }
   },
   actions: {

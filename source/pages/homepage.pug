@@ -180,7 +180,6 @@ v-model="$root._data.dropdownCallerType",
                                 span().infoname Notes
                             .ccase-managment__top__bottom
                                 textarea(:value="notes" readonly).full-width
-                                textarea(:value="comments" readonly).full-width
                         .content__top-line
                             h1.title Case Managment
                         .content__box
@@ -235,6 +234,63 @@ v-model="$root._data.dropdownCallerType",
                             patient-billing(:patient="$root._data.Patients[$root.activePacient]")
                             billing-history(:history="$root._data.Patients[$root.activePacient].BillHistory",@pay-bill="$root.payBill",@show-statement-review="$root.showStatementReview")
                     
+                    //-show triage
+                    .content(v-if="$root.currentShowBox ==='triage' && !currentShowSubBox", key="triage")
+                        
+                        .content__top-line
+                            h1.title Caller Information
+                        div().ccase-managment
+                            .ccase-managment__top
+                                .ccase-managment__top-item
+                                    span().infoname Caller Name
+                                    multiselect(
+                                        v-if="$root._data.addNewCallerName===false",
+                                        v-model="$root._data.dropdownCallerName",
+                                        :options="$root._data.patientNames",
+                                        @input="$root.getCurrentIndexPacient",
+                                        :searchable="false",
+                                        :allowEmpty="false",
+                                        :showLabels="false"
+                                    ).ui-multiselect.ui-multiselect--default.inline-block
+                                    input(v-if="$root._data.addNewCallerName", v-model="$root._data.newCallerName", :value="$root._data.callerPhone", @keyup="$root.onKeyPress").infovalue
+                                    
+                                .ccase-managment__top-item
+                                    span().infoname Caller Phone #
+                                    input(:value="$root._data.callerPhone" readonly).infovalue
+
+                                .ccase-managment__top-item
+                                    span().infoname Call Type
+                                    multiselect(
+                                        :options="['Patient', 'Parent', 'Family', 'Agent', 'Nurse', 'Physician']",
+                                        :searchable="false",
+v-model="$root._data.dropdownCallerType",
+                                        :allowEmpty="false",
+                                        :showLabels="false"
+                                    ).ui-multiselect.ui-multiselect--default.inline-block
+
+                                .ccase-managment__top-item
+                                    span().infoname Other
+                                    input(:value="$root._data.callerHospital" readonly).infovalue
+                            .ccase-managment__top
+                                span().infoname Notes
+                            .ccase-managment__top__bottom
+                                textarea(:value="$root._data.callerNotes" readonly).full-width
+
+                        .content__top-line
+                            h1.title Clinical Details
+                            multiselect(
+                                        v-if="$root._data.addNewCallerName===false",
+                                        :options="$root._data.epicProcesses",
+                                        @input="openNewWindow('http://10.3.74.119/openemr/interface/patient_file/encounter/forms.php')",
+                                        :searchable="false",
+                                        :allowEmpty="false",
+                                        :showLabels="false"
+                                    ).ui-multiselect.ui-multiselect--default.inline-block
+                        .content__box
+                            card(:patients="$root._data.Patients[$root.activePacient]")
+                            allergies(:patients="$root._data.Patients[$root.activePacient]")
+                            encounters(:patients="$root._data.Patients[$root.activePacient]")
+
                     //-show statement review
                     .content(v-if="$root.currentShowBox ==='statement_review' && !currentShowSubBox", key="statement_review")
                         .content__top-line

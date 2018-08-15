@@ -21,9 +21,11 @@ Vue.component('tab', Tab);
 import schedulingPage from "pages/scheduling.vue";
 
 import appointment from "../components/appointment/appointment.vue";
+import allergies from "../components/allergies/allergies.vue";
+import encounters from "../components/encounters/encounters.vue";
 import referral from "../components/referral/referral.vue";
 import journeyMap from "../components/journey-map/journey-map.vue";
-
+import card from "../components/card/card.vue";
 
 // import css style to app
 import '../scss/main.scss';
@@ -61,7 +63,7 @@ let appData = {
   currentShowPhoneBook: false,
   currentShowSearchPatient: false,
   currentShowDetailReferral: false,
-  currentShowUpdateReferral: false,
+  currentShowUpdpateReferral: false,
   newCallerName: '',
   callerName: 'Johns Jacobs',
   callerPhone: '+1 214 701 5489',
@@ -75,8 +77,8 @@ let appData = {
   dropdownCallerType: 'Parent',
   agentID: '',
   referralIndex: 0,
+  epicProcesses: ['Encounter', 'Contracts', 'Assessment', 'Protocol', 'Disposition', 'Care Advice',' Routing'],
 };
- 
 
 let App = new Vue({
   data: appData,
@@ -218,7 +220,10 @@ let App = new Vue({
   },
   components: {
     sidebarPacient,
+    card,
     appointment,
+    allergies,
+    encounters,
     referral,
     journeyMap,
     patientInfo,

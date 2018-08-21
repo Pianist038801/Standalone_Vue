@@ -1587,10 +1587,10 @@ function Purify(_data) {
     console.log('hhh');
     let date = new Date();
     date.setDate(date.getDate() - 100);
-    data.Referrals[i].startDate = date.getDate() + '/' + ['01','02','03','04','05','06','07','08','09','10','11','12'][date.getMonth()] + '/' + date.getFullYear()
+    data.Referrals[i].startDate = ['01','02','03','04','05','06','07','08','09','10','11','12'][date.getMonth()] + '/' + date.getDate() + '/' + date.getFullYear()
     date = new Date();
     date.setDate(date.getDate() - 40);
-    data.Referrals[i].endDate = date.getDate() + '/' + ['01','02','03','04','05','06','07','08','09','10','11','12'][date.getMonth()]  + '/' + date.getFullYear()
+    data.Referrals[i].endDate = ['01','02','03','04','05','06','07','08','09','10','11','12'][date.getMonth()]  + '/' + date.getDate() + '/' + date.getFullYear()
   }
 
   

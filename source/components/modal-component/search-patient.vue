@@ -51,18 +51,7 @@
                     td.g-align-center Zip
                     td.g-align-center {{patient.PhoneNumber}}
                     td.g-align-center {{patient.SSN}}
-                //- tr(v-for="(item, index) in existingApointmentSlots", :class="{'state--hold': item.Status === 'On Hold' }").make-appointment__table-tr
 
-                //-     td.make-appointment__table-time {{item.StartTime | moment("HH:mm")}} - {{item.EndTime | moment("HH:mm A")}}
-                //-     td {{item.Name}}
-                //-     td.g-align-center {{item.Facility}}
-                //-     td.g-align-center {{item.Provider}}
-                //-     td.g-align-center {{item.Physician}}
-                //-     td.make-appointment__table-status.g-align-center {{item.Status}}
-                //-     td.g-align-center.make-appointment__table-action(v-if="item.Status === 'On Hold'")
-                //-         a(href="#3", @click.prevent="").ui-btn.ui-btn--skin-default.ui-btn--theme-disable-border.mod--block update
-                //-     td.g-align-center.make-appointment__table-action(v-else)
-                //-         a(href="#3", @click.prevent="showModal(index)").ui-btn.ui-btn--skin-default.ui-btn--theme-primary-border.mod--block book now
             .modal-appointment__row
                     a(href="#3", @click="onSelect").ui-btn.ui-btn--skin-default.ui-btn--theme-primary-border Select
 

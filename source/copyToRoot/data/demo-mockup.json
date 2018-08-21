@@ -168,38 +168,6 @@
         "patientClass": "In Patient",
         "admissionType": "Elective",
         "dischargeDisposition": "02 - Transferred"
-      },
-      {
-        "type": "Office Visit",
-        "date": "Jun 05, 2018",
-        "eventType": "Hospital Outpatient",
-        "patientClass": "Our Patient",
-        "admissionType": "Emergency",
-        "dischargeDisposition": "09 - Admitted as an inpatient to this hospital"
-      },
-      {
-        "type": "Orders Only",
-        "date": "Mar 15, 2018",
-        "eventType": "Admission",
-        "patientClass": "In Patient",
-        "admissionType": "Elective",
-        "dischargeDisposition": "52 - The referring/prescribing/rendering provider is not eligible to refer/prescribe/order/perform the service billed"
-      },
-      {
-        "type": "Office Visit",
-        "date": "Jun 05, 2018",
-        "eventType": "Telephone",
-        "patientClass": "Our Patient",
-        "admissionType": "Elective",
-        "dischargeDisposition": "B2 - Covered visits. INACTIVE"
-      },
-      {
-        "type": "Abstract",
-        "date": "Mar 05, 2018",
-        "eventType": "History",
-        "patientClass": "Our Patient",
-        "admissionType": "Elective",
-        "dischargeDisposition": "29 - The time limit for filing has expired"
       }
     ],
     "Address": {
@@ -528,7 +496,7 @@
         "status": "Unpaid",
         "StatementId": "02512426",
         "PatientName": "Johns Jacobs",
-        "PatientId": "48724351",
+        "PatientId": "28724351",
         "Payer": "United",
         "ClaimType": "eClaims",
         "Date": "04/04/2015",
@@ -690,7 +658,7 @@
         {
           "Name": "Patient Geo Location",
           "Address": "1431 T Ave, Fort Worth, TX 76179",
-          "Position": {"lat": 32.944827, "lng": -96.645879},
+          "Position": {"lat": 31.944827, "lng": -95.645879},
           "Phone": "+1 (253)-704-2531",
           "Hours": "N / A",
           "Markers":[
@@ -950,7 +918,7 @@
         "status": "Unpaid",
         "StatementId": "02512426",
         "PatientName": "Sarah Jones",
-        "PatientId": "48724351",
+        "PatientId": "28724301",
         "Payer": "United",
         "ClaimType": "eClaims",
         "Date": "04/04/2015",
@@ -1006,7 +974,7 @@
       "DateOfBirth": "2007-12-25 00:00:00",
       "MRN": 7499220,    
       "SSN": "***-**-5428",
-      "PhoneNumber": "+1 214 701 5489",
+      "PhoneNumber": "+1 255 703 8801",
       "PhotoUrl": "img/user2.png",
       "PrimaryCareProvider": {
         "Name": "Mark Williams, MD",
@@ -1026,16 +994,6 @@
       ],
       "allergies": [
         {
-          "name": "IODINE",
-          "description": "IODINE",
-          "dateEntered": "Aug 08, 2018",
-          "dateNoted": "Aug 08, 2018",
-          "reactions": "itchy rash taht comes on slowly",
-          "reactionComments": "Direct contact with skin results in small bumps",
-          "severity": "Moderate",
-          "type": "Intolerance"
-        },
-        {
           "name": "PENICILLINS",
           "description": "PENICILLINS",
           "dateEntered": "Jul 13, 2018",
@@ -1054,6 +1012,24 @@
           "reactionComments": "Patient was stung by a bee",
           "severity": "High",
           "type": "Intolerant"
+        }
+      ],
+      "encounters": [
+        {
+          "type": "Office Visit",
+          "date": "Jun 05, 2018",
+          "eventType": "Telephone",
+          "patientClass": "Our Patient",
+          "admissionType": "Elective",
+          "dischargeDisposition": "B2 - Covered visits. INACTIVE"
+        },
+        {
+          "type": "Abstract",
+          "date": "Mar 05, 2018",
+          "eventType": "History",
+          "patientClass": "Our Patient",
+          "admissionType": "Elective",
+          "dischargeDisposition": "29 - The time limit for filing has expired"
         }
       ],
       "TreatmentTeam": [
@@ -1277,18 +1253,18 @@
             "Name": "Patient Geo Location",
             "Address": "5234 T Ave, Fort Worth, TX 76179",
             "Position": {
-              "lat": 32.944827,
-              "lng": -96.645879
+              "lat": 31.900827,
+              "lng": -97.600879
             },
-            "Phone": "+1 (214)-701-5489",
+            "Phone": "+1 255 703 8801",
             "Hours": "N / A",
             "Markers": [
               {
                 "Name": "Patient Geo Location",
                 "Address": "1272 Belt Line Rd, Garland TX 75040",
                 "Position": {
-                  "lat": 32.944827,
-                  "lng": -96.645879
+                  "lat": 31.900827,
+                  "lng": -97.600879
                 }
               }
             ]
@@ -1297,8 +1273,8 @@
             "Name": "Pharmacies In Area",
             "Address": "1272 Belt Line Rd, Garland TX 75040",
             "Position": {
-              "lat": 32.944827,
-              "lng": -96.645879
+              "lat": 31.900827,
+              "lng": -97.600879
             },
             "Phone": "+1 (972) 495-1933",
             "Hours": "Open 9 AM to 10 PM",
@@ -1307,48 +1283,48 @@
                 "Name": "CVS Pharmacy",
                 "Address": "1372 Belt Line Rd",
                 "Position": {
-                  "lat": 32.944527,
-                  "lng": -96.646960
+                  "lat": 31.900827,
+                  "lng": -97.600879
                 }
               },
               {
                 "Name": "Walmart Pharmacy",
                 "Address": "101 W Buckingham Rd",
                 "Position": {
-                  "lat": 32.932013,
-                  "lng": -96.631611
+                  "lat": 31.900827,
+                  "lng": -97.600879
                 }
               },
               {
                 "Name": "Walgreens",
                 "Address": "2614 Lavon Dr",
                 "Position": {
-                  "lat": 32.939566,
-                  "lng": -96.621946
+                  "lat": 31.900827,
+                  "lng": -97.600879
                 }
               },
               {
                 "Name": "Walgreens",
                 "Address": "1902 N Jupiter Rd",
                 "Position": {
-                  "lat": 32.930183,
-                  "lng": -96.682285
+                  "lat": 31.900827,
+                  "lng": -97.600879
                 }
               },
               {
                 "Name": "CVS Pharmacy - Target",
                 "Address": "5301 N Garland Ave",
                 "Position": {
-                  "lat": 32.965650,
-                  "lng": -96.646806
+                  "lat": 31.900827,
+                  "lng": -97.600879
                 }
               },
               {
                 "Name": "Walmart Pharmacy",
                 "Address": "5302 N Garland Ave",
                 "Position": {
-                  "lat": 32.962346,
-                  "lng": -96.642499
+                  "lat": 31.900827,
+                  "lng": -97.600879
                 }
               }
             ]
@@ -1358,7 +1334,7 @@
             "Address": "7 Medical Pkwy, Dallas, TX 75234",
             "Position": {
               "lat": 32.944827,
-              "lng": -96.645879
+              "lng": -97.600879
             },
             "Phone": "+(972) 888-7000",
             "Hours": "Open 9AM to 9PM",
@@ -1368,7 +1344,7 @@
                 "Address": "2300 Marie Curie Blvd",
                 "Position": {
                   "lat": 32.918755,
-                  "lng": -96.661963
+                  "lng": -97.600879
                 }
               },
               {
@@ -1376,7 +1352,7 @@
                 "Address": "2300 Marie Curie Drive Floors 3E & 3W",
                 "Position": {
                   "lat": 32.918793,
-                  "lng": -96.662041
+                  "lng": -97.600879
                 }
               },
               {

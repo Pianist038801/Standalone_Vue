@@ -95,7 +95,7 @@ let App = new Vue({
     let vm = this;
     vm.activePacient = 1;
     vm.currentShowBox = 'home';
-    vm.spaceWidget =  window.ciscosparkClient();
+    vm.spaceWidget = window.ciscosparkClient();
     Vue.http.get('demo-credentials.json').then((response) => {
       vm.spaceWidget.init(response.data);
     });
@@ -156,17 +156,24 @@ let App = new Vue({
           //     console.error('No TempDNIS Found.')
           // }
           // else{
-            // const responseData = response.data;
-            //vm.callerName = responseData.callerName;
-            vm.callerName = 'Johns Jacobs'
-            //vm.callerPhone = responseData.callerPhone;
-            vm.callerPhone = '+1 214 701 5489';
-            //vm.callerType = responseData.callerType;
-            vm.callerType = 'Parent';
-            //vm.callerNotes = responseData.notes;
-            vm.callerNotes = 'Transferred from Agent at Contact Center in regards to Speciality Appointment';
+            const responseData = response.data;   
+            vm.callerName = responseData.callerName;
+            //vm.callerName = 'Johns Jacobs'
+            vm.callerPhone = responseData.callerPhone;
+            //vm.callerPhone = '+1 214 701 5489';
+            vm.callerType = responseData.callerType;
+            //vm.callerType = 'Parent';
+            vm.callerNotes = responseData.notes;
+            //vm.callerNotes = 'Transferred from Agent at Contact Center in regards to Speciality Appointment';
             //vm.activePacient = responseData.patientName.indexOf('Sarah') > -1 ? 1 : 0;
-            vm.activePacient = 1;
+            const _patientName = responseData.patientName;
+            if(_patientName.indexOf('Sarah') > -1) 
+              vm.activePacient = 1;
+            else if(_patientName.indexOf('Johns') > -1) 
+              vm.activePacient = 0;
+            else
+              vm.activePacient = 2;
+            //vm.activePacient = 1;
             // vm.agentID = responseData.phantom3;
             // console.log('AGID=', vm.agentID);
             vm.releaseTempDNIS(tempDNIS);

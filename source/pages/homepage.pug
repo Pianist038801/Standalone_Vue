@@ -17,8 +17,14 @@ block content
                         .content__box
                             phone-book(:show="$root.currentShowPhoneBook")
                 transition(name="fade", mode='out-in')
+                    //- //-show iFrame
+                    //- iframe(
+                    //-     :src="https://console.dialogflow.com/api-client/demo/embedded/3996359c-0a4c-4f02-bd22-220717ce3c20",
+                    //-     width="350",
+                    //-     height="430",
+                    //-     allow="microphone;"
+                    //- )
                     //-show home subPage
-                    
                     .content(v-if="$root.currentShowBox ==='home' && !currentShowSubBox", key="home")
                         .content__top-line
                             h1.title Caller Information

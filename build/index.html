@@ -61,7 +61,7 @@
             <transition name="fade" mode="out-in">
               <div class="content">
                 <div class="content__box">
-                  <phone-book :show="$root.currentShowPhoneBook"></phone-book>
+                  <phone-book :show="$root.currentShowPhoneBook">   </phone-book>
                 </div>
               </div>
             </transition>
@@ -400,6 +400,11 @@
               </div>
             </transition>
           </div>
+          <div class="dialog-box" v-if="$root.showDialog === true">
+            <iframe src="https://console.dialogflow.com/api-client/demo/embedded/3996359c-0a4c-4f02-bd22-220717ce3c20" width="350" height="430" allow="microphone"></iframe>
+            <div class="button"><img src="img/minimize.png" alt="333" width="40" height="40" @click.prevent="$root.showDialog = false"></div>
+          </div>
+          <div class="dialog-box" v-if="$root.showDialog === false"><img src="img/chat.jpg" alt="333" width="350" height="78" @click.prevent="$root.showDialog = true"></div>
         </div>
       </div>
     </div>

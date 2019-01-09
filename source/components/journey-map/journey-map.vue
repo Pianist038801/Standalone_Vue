@@ -116,6 +116,7 @@
 
     .journey-map__line {
         display: flex;
+        width: 50%;
         flex-shrink: 0;
         position: relative;
         z-index: 10;

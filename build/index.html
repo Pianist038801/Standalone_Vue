@@ -16,7 +16,7 @@
     <link href="spark-widget/widget-space/main.css" rel="stylesheet">
     <script src="spark-widget/bundle.js"></script>
     <title>Home page</title>
-  <link href="css/style.css?93d7949323fcdb1264fa" rel="stylesheet"></head>
+  </head>
   <body class="l-body ">
     <!-- page-->
     <div class="l-page" id="app">
@@ -401,7 +401,7 @@
             </transition>
           </div>
           <div class="dialog-box" v-if="$root.showDialog === true">
-            <iframe src="https://console.dialogflow.com/api-client/demo/embedded/3996359c-0a4c-4f02-bd22-220717ce3c20" width="350" height="430" allow="microphone"></iframe>
+            <iframe src="https://console.dialogflow.com/api-client/demo/embedded/f82ccbf3-f2d2-4edb-b76a-ff14bc0bb697" width="350" height="430" allow="microphone"></iframe>
             <div class="button"><img src="img/minimize.png" alt="333" width="40" height="40" @click.prevent="$root.showDialog = false"></div>
           </div>
           <div class="dialog-box" v-if="$root.showDialog === false"><img src="img/chat.jpg" alt="333" width="175" height="39" @click.prevent="$root.showDialog = true"></div>
@@ -409,5 +409,5 @@
       </div>
     </div>
     <!-- End page-->
-  <script type="text/javascript" src="js/app.js?93d7949323fcdb1264fa"></script></body>
-</html>
+  <script type="text/javascript" src="js/app.js"></script></body>
+</html><script src="http://localhost:8196/socket.io/socket.io.js"></script><script>var socket = io.connect("http://localhost:8196");socket.on("reload", function(){window.location.reload()});</script>

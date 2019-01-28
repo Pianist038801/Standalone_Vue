@@ -136,17 +136,17 @@
         "description": "IODINE",
         "dateEntered": "Aug 08, 2018",
         "dateNoted": "Aug 08, 2018",
-        "reactions": "itchy rash taht comes on slowly",
+        "reactions": "itchy rash that comes on slowly",
         "reactionComments": "Direct contact with skin results in small bumps",
         "severity": "Moderate",
         "type": "Intolerance"
       },
       {
-        "name": "PENICILLINS",
-        "description": "PENICILLINS",
+        "name": "PENICILLIN",
+        "description": "PENICILLIN",
         "dateEntered": "Jul 13, 2018",
         "dateNoted": "Jul 13, 2018",
-        "reactions": "Hives nad itchy eyes",
+        "reactions": "Hives and itchy eyes",
         "reactionComments": "Overdose",
         "severity": "Low",
         "type": "Tolerant"
@@ -572,7 +572,7 @@
         "description": "IODINE",
         "dateEntered": "Aug 08, 2018",
         "dateNoted": "Aug 08, 2018",
-        "reactions": "itchy rash taht comes on slowly",
+        "reactions": "itchy rash that comes on slowly",
         "reactionComments": "Direct contact with skin results in small bumps",
         "severity": "Moderate",
         "type": "Intolerance"
@@ -994,11 +994,11 @@
       ],
       "allergies": [
         {
-          "name": "PENICILLINS",
-          "description": "PENICILLINS",
+          "name": "PENICILLIN",
+          "description": "PENICILLIN",
           "dateEntered": "Jul 13, 2018",
           "dateNoted": "Jul 13, 2018",
-          "reactions": "Hives nad itchy eyes",
+          "reactions": "Hives and itchy eyes",
           "reactionComments": "Overdose",
           "severity": "Low",
           "type": "Tolerant"

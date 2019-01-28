@@ -55,7 +55,7 @@ import detailReferral from "../components/modal-component/detail-referral.vue";
 let appData = {
   showDialog: false,
   epicAddress: 'http://10.3.74.119/openemr/interface/patient_file/encounter/forms.php',
-  activePacient: 1,
+  activePacient: 3,
   journeyOptions: [],
   showImageModal: 0,
   currentShowBox: null,
@@ -94,7 +94,7 @@ let App = new Vue({
   },
   mounted() {
     let vm = this;
-    vm.activePacient = 1;
+    vm.activePacient = 3;
     vm.currentShowBox = 'home';
     vm.spaceWidget = window.ciscosparkClient();
     Vue.http.get('demo-credentials.json').then((response) => {
@@ -165,6 +165,9 @@ let App = new Vue({
             vm.callerType = responseData.callerType;
             //vm.callerType = 'Parent';
             vm.callerNotes = responseData.notes;
+
+            //For Opal Lee Demo 
+            vm.callerNotes = 'Patient is pregnant with twins, expectancy date soon';
             //vm.callerNotes = 'Transferred from Agent at Contact Center in regards to Speciality Appointment';
             //vm.activePacient = responseData.patientName.indexOf('Sarah') > -1 ? 1 : 0;
             const _patientName = responseData.patientName;
@@ -172,8 +175,10 @@ let App = new Vue({
               vm.activePacient = 1;
             else if(_patientName.indexOf('Johns') > -1) 
               vm.activePacient = 0;
-            else
+            else if(_patientName.indexOf('Grace') > -1) 
               vm.activePacient = 2;
+            else
+              vm.activePacient = 3; 
             //vm.activePacient = 1;
             // vm.agentID = responseData.phantom3;
             // console.log('AGID=', vm.agentID);

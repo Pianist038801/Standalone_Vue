@@ -190,10 +190,10 @@
             },
             namesPacient: function () {
                 let vm = this;
-                let array = ['EPIC'];
+                let array = ['EHR'];
 
                 vm.pacients.forEach((item, i) => {
-                    if(item.Category=='EPIC')
+                    if(item.Category=='EHR')
                         array.push(item.Name);
                 });
                 return array;

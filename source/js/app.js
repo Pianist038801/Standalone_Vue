@@ -298,9 +298,9 @@ Vue.http.get(urlData)
 
       let data = _mockup;
       console.log('data=', data)
-      let array = ['EPIC']; 
+      let array = ['EHR']; 
       data.Patients.forEach((item, i) => {
-          if(item.Category=='EPIC')
+          if(item.Category=='EHR')
               array.push(item.Name);
       });
       
